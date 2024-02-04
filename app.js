@@ -111,9 +111,6 @@ app.get('/api/status', async (req, res) => {
         console.log("errorState:", globalErrorState, "\n");
         console.log('settings', settings)
 
-        const result = await readFileSync('output.txt');
-        console.log('File content:', result);
-
 
         // Your logic to provide the stored status
         res.json({ generatorRunning: globalGeneratorRunning, requestToRun: globalRequestToRun, errorState: globalErrorState, settings: settings});
