@@ -27,8 +27,9 @@ const corsOptions = {
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
     optionsSuccessStatus: 204,
     credentials: true,
-    allowedHeaders: 'Content-Type',
+    allowedHeaders: 'Content-Type, Authorization',
 };
+
 
 app.use(cors(corsOptions));
 app.use(rateLimitMiddleware);
