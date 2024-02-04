@@ -313,7 +313,7 @@ function authenticateToken(req, res, next) {
       next();
     });
   }
-  const fileName = 'users.json'
+  const fileName = 'settings.json'
   
   async function writeToFile(file, data) {
     try {
