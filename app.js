@@ -3,19 +3,24 @@ import fetch from 'node-fetch';
 import rateLimitMiddleware from './middlewares/ratelimit.js';
 import dotenv from 'dotenv';
 import cors from 'cors';
-import { promises as fsp } from 'fs';
+import bodyParser from 'body-parser';
+import bcrypt from 'bcrypt';
+import jwt from 'jsonwebtoken';
+import fs from 'fs';
 
 dotenv.config();
 
 const app = express();
 const hostname = '127.0.0.1';
 const port = 3000;
-const filePath = new URL('./settings.json', import.meta.url).pathname;
+
+const secretKey = process.env.SECRET_KEY;
+const hashedPassword = process.env.HASHED_PASSWORD;
+
 const version = '1.5.0';
 var globalGeneratorRunning = false;
 var globalRequestToRun = false;
 var globalErrorState = false;
-var globalSettings;
 
 const corsOptions = {
     origin: '*',
@@ -26,8 +31,17 @@ const corsOptions = {
 };
 
 app.use(cors(corsOptions));
-
 app.use(rateLimitMiddleware);
+app.use(bodyParser.json());
+
+const users = [
+    {
+      id: 1,
+      username: 'yolanda',
+      password: hashedPassword,
+    },
+  ];
+  
 
 app.get('/', (req, res) => {
     // set response content    
@@ -43,6 +57,25 @@ app.get('/', (req, res) => {
   console.log(`[Version ${version}]: New request => http://${hostname}:${port}`+req.url);
 
 })
+
+app.post('/login', (req, res) => {
+    const { username, password } = req.body;
+  
+    const user = users.find(u => u.username === username);
+  
+    if (user && bcrypt.compareSync(password, user.password)) {
+      console.log('Password comparison successful');
+      const token = jwt.sign({ userId: user.id }, secretKey, { expiresIn: '30d' });
+      res.json({ token });
+    } else {
+      console.log('Password comparison failed');
+      res.status(401).json({ error: 'Invalid credentials' });
+    }
+  });
+
+  app.get('/protected-route', authenticateToken, (req, res) => {
+    res.json({ message: 'This is a protected route!' });
+  });
 
 app.get('/api/victron/data', async (req, res) => {
     try {
@@ -72,10 +105,6 @@ app.get('/api/status', async (req, res) => {
         if(errorState !== ''){
             globalErrorState = errorState;
         }
-        if(settings !== null){
-            globalSettings = settings;
-            await writeResponseToFile(settings);
-        }
     
         console.log("\ngeneratorRunning:", globalGeneratorRunning);
         console.log("requestToRun:", globalRequestToRun);
@@ -87,7 +116,7 @@ app.get('/api/status', async (req, res) => {
 
 
         // Your logic to provide the stored status
-        res.json({ generatorRunning: globalGeneratorRunning, requestToRun: globalRequestToRun, errorState: globalErrorState, settings: result});
+        res.json({ generatorRunning: globalGeneratorRunning, requestToRun: globalRequestToRun, errorState: globalErrorState, settings: settings});
     } catch (error) {
         console.error(error);
         res.status(500).json({ error: 'Internal Server Error' });
@@ -257,41 +286,88 @@ async function fetchAllData() {
     
 }
 
-// // Create a write stream to 'output.txt'
-// const writer = fs.createWriteStream('output.txt');
+// Create a JavaScript object 'response' with 'name' and 'id' properties
+const responseDefault = {
+    defaultVoltage: 49.0,
+    defaultRuntime: 30,
+    checkHour: 2100,
+    checkVoltage: 51.8,
+    checkRuntime: 30
+};
 
-// // Create a JavaScript object 'response' with 'name' and 'id' properties
-// const response = {
-//     defaultVoltage: 49.0,
-//     defaultRuntime: 30,
-//     checkHour: 2100,
-//     checkVoltage: 51.8,
-//     checkRuntime: 30
-// };
-
-// // Write the JSON representation of the 'response' object to the file
-// writer.write(JSON.stringify(response));
-
-async function readFileSync(filePath) {
-    try {
-        const fileContent = await fsp.readFile(filePath, 'utf-8');
-        const parsedContent = JSON.parse(fileContent);
-        return parsedContent;
-    } catch (error) {
-        console.error('Error reading file asynchronously:', error);
-        throw error;
+function authenticateToken(req, res, next) {
+    const token = req.header('Authorization');
+  
+    if (!token) {
+      return res.status(401).json({ error: 'Unauthorized - Token not provided' });
     }
-}
-
-// Example usage
-// const result = readFileSync('settings.txt');
-// console.log('File content:', result);
-
-async function writeResponseToFile(response) {
+  
+    // Extract token without the 'Bearer ' prefix
+    const tokenWithoutBearer = token.replace('Bearer ', '');
+  
+    jwt.verify(tokenWithoutBearer, secretKey, (err, user) => {
+      if (err) {
+        console.error('Token verification error:', err);
+        return res.status(403).json({ error: 'Token is not valid or expired' });
+      }
+  
+      req.user = user;
+      next();
+    });
+  }
+  const fileName = 'users.json'
+  
+  async function writeToFile(file, data) {
     try {
-        await fsp.writeFile('output.txt', JSON.stringify(response));
-        console.log('Write to file successful');
+      let settings = JSON.stringify(data);
+      await fs.promises.writeFile(file, settings);
+      console.log('Settings successfully written to file');
     } catch (error) {
-        console.error('Error writing to file:', error.message);
+      console.error('Error writing to file:', error);
+      throw error;
     }
-}
+  }
+  
+  async function readFromFile(file) {
+    try {
+      let rawdata = await fs.promises.readFile(file);
+      let savedSettings = JSON.parse(rawdata);
+      console.log('Settings successfully read from file');
+      return savedSettings;
+    } catch (error) {
+      console.error('Error reading from file:', error);
+      throw error;
+    }
+  }
+  function handleServerError(res, error, errorMessage) {
+    console.error(errorMessage, error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+
+  app.post('/settings', authenticateToken, async (req, res) => {
+    const settings = req.body;
+    try {
+      if (settings !== undefined && settings !== null) {
+        console.log('Settings Received');
+        await writeToFile(fileName, settings);
+  
+        res.json({ settings });
+      } else {
+        console.log('Invalid settings data received');
+        res.status(400).json({ error: 'Invalid settings data' });
+      }
+    } catch (error) {
+      handleServerError(res, error, 'Settings Save FAIL:');
+    }
+  });
+  
+  
+  app.get('/getSettings', authenticateToken, async (req, res) => {
+    try {
+      console.log('Settings being sent');
+      let savedData = await readFromFile(fileName);
+      res.json(savedData);
+    } catch (error) {
+      handleServerError(res, error, 'Settings Sent FAIL:');
+    }
+  });
