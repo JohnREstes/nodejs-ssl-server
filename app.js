@@ -130,9 +130,10 @@ app.listen(port, () => {
 var token, idUser, idSite;
 async function fetchAllData() {
     // Access environment variables
+
     const usernameVic = process.env.USERNAME;
     const passwordVic = process.env.PASSWORD;
-
+    console.log(usernameVic, passwordVic)
     var data;
 
     try {
@@ -147,8 +148,11 @@ async function fetchAllData() {
         if (token == null ){
             try {
                 await get_login_token();
+                console.log("got Token")
                 await get_installations();
+                console.log("got Insallation")
                 data = await get_Chart(); 
+                console.log("got Chart")
             } catch (error) {
                 console.error(error);
                 throw error;
@@ -157,7 +161,7 @@ async function fetchAllData() {
             try {
                 data = await get_Chart(); 
             } catch (error) {
-                token = 0;
+                token = null;
                 console.error(error);
                 throw error;
             }
