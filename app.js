@@ -133,7 +133,6 @@ async function fetchAllData() {
 
     const usernameVic = process.env.USERNAME;
     const passwordVic = process.env.PASSWORD;
-    console.log(usernameVic, passwordVic)
     var data;
 
     try {
@@ -148,11 +147,8 @@ async function fetchAllData() {
         if (token == null ){
             try {
                 await get_login_token();
-                console.log("got Token")
                 await get_installations();
-                console.log("got Insallation")
                 data = await get_Chart(); 
-                console.log("got Chart")
             } catch (error) {
                 console.error(error);
                 throw error;
@@ -170,7 +166,6 @@ async function fetchAllData() {
     }
 
     async function get_login_token() {
-        console.log("Get Login Token and Used ID")
         var myHeaders = new Headers();
         myHeaders.append("Content-Type", "application/json");
 
