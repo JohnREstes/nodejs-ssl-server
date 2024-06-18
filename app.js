@@ -78,7 +78,7 @@ app.post('/login', (req, res) => {
     res.json({ message: 'This is a protected route!' });
   });
 
-app.get('/api/victron/data', async (req, res) => {
+app.get('/api/victron/data', authenticateToken, async (req, res) => {
     try {
         const data = await fetchAllData();
         res.json(data); // send the data as a JSON response
