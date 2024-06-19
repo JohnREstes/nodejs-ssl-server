@@ -7,6 +7,7 @@ import bodyParser from 'body-parser';
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 import fs from 'fs';
+const { getGrowattData } = require('../growattData/GrowattPlaywrightNew/GrowattVal.js'); 
 
 dotenv.config();
 
@@ -121,7 +122,15 @@ app.get('/api/status', async (req, res) => {
     }
 });
 
-
+app.get('/fetch-growatt-data', async (req, res) => {
+  try {
+      const data = await getGrowattData();
+      res.json(data);
+  } catch (error) {
+      console.error('Error fetching Growatt data:', error);
+      res.status(500).json({ error: 'Internal Server Error' });
+  }
+});
 
 app.listen(port, () => {
     console.log(`[Version ${version}]: Server running at http://${hostname}:${port}/`);
