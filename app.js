@@ -7,7 +7,8 @@ import bodyParser from 'body-parser';
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 import fs from 'fs';
-const { getGrowattData } = require('../growattData/GrowattPlaywrightNew/GrowattVal.js'); 
+import { getGrowattData } from '../growattData/GrowattPlaywrightNew/GrowattVal.js';
+
 
 dotenv.config();
 
