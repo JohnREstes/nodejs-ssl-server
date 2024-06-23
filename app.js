@@ -7,7 +7,7 @@ import bodyParser from 'body-parser';
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 import fs from 'fs';
-import { getGrowattData } from '../growattData/GrowattPlaywrightNew/GrowattVal.js';
+//import { getGrowattData } from '../growattData/GrowattPlaywrightNew/GrowattVal.js';
 
 
 dotenv.config();
@@ -80,7 +80,7 @@ app.post('/login', (req, res) => {
     res.json({ message: 'This is a protected route!' });
   });
 
-app.get('/api/victron/data', authenticateToken, async (req, res) => {
+app.get('/api/victron/data', async (req, res) => {
     try {
         const data = await fetchAllData();
         res.json(data); // send the data as a JSON response
@@ -125,8 +125,9 @@ app.get('/api/status', async (req, res) => {
 
 app.get('/fetch-growatt-data', async (req, res) => {
   try {
-      const data = await getGrowattData();
-      res.json(data);
+      //const data = await getGrowattData();
+      //res.json(data);
+      res.json({"hello":"World"})
   } catch (error) {
       console.error('Error fetching Growatt data:', error);
       res.status(500).json({ error: 'Internal Server Error' });
