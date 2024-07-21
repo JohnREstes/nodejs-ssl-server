@@ -6,10 +6,6 @@ import cors from 'cors';
 import bodyParser from 'body-parser';
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
-import fs from 'fs';
-import { Console } from 'console';
-//import { getGrowattData } from '../growattData/GrowattPlaywrightNew/GrowattVal.js';
-
 
 dotenv.config();
 
@@ -89,50 +85,6 @@ app.get('/api/victron/data', async (req, res) => {
         console.error(error);
         res.status(500).json({ error: 'Internal Server Error' });
     }
-});
-
-app.get('/api/status', async (req, res) => {
-    try {
-        // Extract the 'message' parameter from the query string
-        const message = req.query.message;
-
-        // Parse the JSON string to get the variables
-        const { generatorRunning, requestToRun, errorState, settings } = JSON.parse(message);
-
-        // Assign the values to global variables
-        if (generatorRunning !== ''){
-            globalGeneratorRunning = generatorRunning;
-        }
-        if(requestToRun !== ''){
-            globalRequestToRun = requestToRun;
-        }
-        if(errorState !== ''){
-            globalErrorState = errorState;
-        }
-    
-        console.log("\ngeneratorRunning:", globalGeneratorRunning);
-        console.log("requestToRun:", globalRequestToRun);
-        console.log("errorState:", globalErrorState, "\n");
-        console.log('settings', settings)
-
-
-        // Your logic to provide the stored status
-        res.json({ generatorRunning: globalGeneratorRunning, requestToRun: globalRequestToRun, errorState: globalErrorState, settings: settings});
-    } catch (error) {
-        console.error(error);
-        res.status(500).json({ error: 'Internal Server Error' });
-    }
-});
-
-app.get('/fetch-growatt-data', async (req, res) => {
-  try {
-      //const data = await getGrowattData();
-      //res.json(data);
-      res.json({"hello":"World"})
-  } catch (error) {
-      console.error('Error fetching Growatt data:', error);
-      res.status(500).json({ error: 'Internal Server Error' });
-  }
 });
 
 app.listen(port, () => {
@@ -299,15 +251,6 @@ async function fetchAllData() {
     
 }
 
-// Create a JavaScript object 'response' with 'name' and 'id' properties
-const responseDefault = {
-    defaultVoltage: 49.0,
-    defaultRuntime: 30,
-    checkHour: 2100,
-    checkVoltage: 51.8,
-    checkRuntime: 30
-};
-
 function authenticateToken(req, res, next) {
     const token = req.header('Authorization');
   
@@ -328,59 +271,3 @@ function authenticateToken(req, res, next) {
       next();
     });
   }
-  const fileName = 'settings.json'
-  
-  async function writeToFile(file, data) {
-    try {
-      let settings = JSON.stringify(data);
-      await fs.promises.writeFile(file, settings);
-      console.log('Settings successfully written to file');
-    } catch (error) {
-      console.error('Error writing to file:', error);
-      throw error;
-    }
-  }
-  
-  async function readFromFile(file) {
-    try {
-      let rawdata = await fs.promises.readFile(file);
-      let savedSettings = JSON.parse(rawdata);
-      console.log('Settings successfully read from file');
-      return savedSettings;
-    } catch (error) {
-      console.error('Error reading from file:', error);
-      throw error;
-    }
-  }
-  function handleServerError(res, error, errorMessage) {
-    console.error(errorMessage, error);
-    res.status(500).json({ error: 'Internal Server Error' });
-  }
-
-  app.post('/settings', authenticateToken, async (req, res) => {
-    const settings = req.body;
-    try {
-      if (settings !== undefined && settings !== null) {
-        console.log('Settings Received');
-        await writeToFile(fileName, settings);
-  
-        res.json({ settings });
-      } else {
-        console.log('Invalid settings data received');
-        res.status(400).json({ error: 'Invalid settings data' });
-      }
-    } catch (error) {
-      handleServerError(res, error, 'Settings Save FAIL:');
-    }
-  });
-  
-  
-  app.get('/getSettings', authenticateToken, async (req, res) => {
-    try {
-      console.log('Settings being sent');
-      let savedData = await readFromFile(fileName);
-      res.json(savedData);
-    } catch (error) {
-      handleServerError(res, error, 'Settings Sent FAIL:');
-    }
-  });
