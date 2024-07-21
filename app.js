@@ -219,6 +219,7 @@ async function fetchAllData() {
             const response = await fetch(`https://vrmapi.victronenergy.com/v2/users/${idUser}/installations`, requestOptions);
             const result = await response.text();
             const data = JSON.parse(result); // result is a JSON string
+            console.log(data)
             idSite = data.records[0].idSite
         } catch (error) {
             console.log('error', error);
