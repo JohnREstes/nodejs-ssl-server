@@ -7,6 +7,7 @@ import bodyParser from 'body-parser';
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 import fs from 'fs';
+import { Console } from 'console';
 //import { getGrowattData } from '../growattData/GrowattPlaywrightNew/GrowattVal.js';
 
 
@@ -199,6 +200,7 @@ async function fetchAllData() {
             const data = JSON.parse(result); // result is a JSON string
             token = data.token
             idUser = data.idUser
+            console.log(token, idUser);
         } catch (error) {
             console.log('error', error);
             throw error; // Rethrow the error to handle it outside this function if needed
@@ -221,6 +223,7 @@ async function fetchAllData() {
             const data = JSON.parse(result); // result is a JSON string
             console.log(data)
             idSite = data.records[0].idSite
+            console.log(idSite)
         } catch (error) {
             console.log('error', error);
             throw error; // Rethrow the error to handle it outside this function if needed
