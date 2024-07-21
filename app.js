@@ -6,6 +6,9 @@ import cors from 'cors';
 import bodyParser from 'body-parser';
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
+import nodemailer from 'nodemailer';
+import { google } from 'googleapis';
+const { OAuth2 } = google.auth;
 
 dotenv.config();
 
@@ -17,9 +20,6 @@ const secretKey = process.env.SECRET_KEY;
 const hashedPassword = process.env.HASHED_PASSWORD;
 
 const version = '1.5.0';
-var globalGeneratorRunning = false;
-var globalRequestToRun = false;
-var globalErrorState = false;
 
 const corsOptions = {
     origin: '*',
@@ -32,6 +32,7 @@ const corsOptions = {
 
 app.use(cors(corsOptions));
 app.use(rateLimitMiddleware);
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 const users = [
@@ -152,7 +153,6 @@ async function fetchAllData() {
             const data = JSON.parse(result); // result is a JSON string
             token = data.token
             idUser = data.idUser
-            console.log(token, idUser);
         } catch (error) {
             console.log('error', error);
             throw error; // Rethrow the error to handle it outside this function if needed
@@ -173,9 +173,7 @@ async function fetchAllData() {
             const response = await fetch(`https://vrmapi.victronenergy.com/v2/users/${idUser}/installations`, requestOptions);
             const result = await response.text();
             const data = JSON.parse(result); // result is a JSON string
-            console.log(data)
             idSite = data.records[0].idSite
-            console.log(idSite)
         } catch (error) {
             console.log('error', error);
             throw error; // Rethrow the error to handle it outside this function if needed
@@ -241,7 +239,6 @@ async function fetchAllData() {
                     formattedValue: record.formattedValue,
                     timestamp: record.timestamp
                 }));
-            console.log(dataArray);
             return dataArray;
         } catch (error) {
             console.log('error', error);
@@ -271,3 +268,56 @@ function authenticateToken(req, res, next) {
       next();
     });
   }
+
+
+
+  const oauth2Client = new OAuth2(
+    process.env.CLIENT_ID,
+    process.env.CLIENT_SECRET,
+    process.env.REDIRECT_URL
+);
+
+oauth2Client.setCredentials({
+    refresh_token: process.env.REFRESH_TOKEN
+});
+
+const transporter = nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+        type: 'OAuth2',
+        user: process.env.EMAIL,
+        clientId: process.env.CLIENT_ID,
+        clientSecret: process.env.CLIENT_SECRET,
+        refreshToken: process.env.REFRESH_TOKEN,
+        accessToken: oauth2Client.getAccessToken()
+    }
+});
+
+app.post('/send-email', (req, res) => {
+    console.log(req)
+
+    const mailOptions = {
+        from: req.body.email,
+        to: process.env.EMAIL, // Replace with your receiving email
+        subject: 'New Contact Form Submission',
+        text: `
+        First Name: ${req.body.firstName}
+        Last Name: ${req.body.lastName}
+        Email: ${req.body.email}
+        Phone: ${req.body.phone}
+        Dates: ${req.body.dates}
+        Travelers: ${req.body.travelers}
+        Num. Rooms: ${req.body.rooms}
+        Message: ${req.body.description}
+        `
+    };
+
+    transporter.sendMail(mailOptions, (error, info) => {
+        if (error) {
+            console.error('Error sending email:', error);
+            return res.status(500).send(error.toString());
+        }
+        console.log('Email sent:', info.response);
+        res.status(200).send('Email sent: ' + info.response);
+    });
+});  
