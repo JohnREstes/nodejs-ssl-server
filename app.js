@@ -8,6 +8,8 @@ import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 import nodemailer from 'nodemailer';
 import { google } from 'googleapis';
+import helmet from 'helmet';
+
 const { OAuth2 } = google.auth;
 
 dotenv.config();
@@ -29,11 +31,23 @@ const corsOptions = {
     allowedHeaders: 'Content-Type, Authorization',
 };
 
-
 app.use(cors(corsOptions));
 app.use(rateLimitMiddleware);
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+
+// Set up helmet with CSP
+app.use(helmet());
+app.use(
+    helmet.contentSecurityPolicy({
+        useDefaults: true,
+        directives: {
+            'script-src': ["'self'", 'https://node.johnetravels.com'], // Add your allowed script sources here
+            'img-src': ["'self'", 'https://picsum.photos'], // Add your allowed image sources here
+            // Add other directives as needed
+        },
+    })
+);
 
 const users = [
     {
@@ -41,8 +55,7 @@ const users = [
       username: 'yolanda',
       password: hashedPassword,
     },
-  ];
-  
+];
 
 app.get('/', (req, res) => {
     // set response content    
@@ -57,7 +70,7 @@ app.get('/', (req, res) => {
  
   console.log(`[Version ${version}]: New request => http://${hostname}:${port}`+req.url);
 
-})
+});
 
 app.post('/login', (req, res) => {
     const { username, password } = req.body;
@@ -72,11 +85,11 @@ app.post('/login', (req, res) => {
       console.log('Password comparison failed');
       res.status(401).json({ error: 'Invalid credentials' });
     }
-  });
+});
 
-  app.get('/protected-route', authenticateToken, (req, res) => {
+app.get('/protected-route', authenticateToken, (req, res) => {
     res.json({ message: 'This is a protected route!' });
-  });
+});
 
 app.get('/api/victron/data', async (req, res) => {
     try {
@@ -260,64 +273,55 @@ function authenticateToken(req, res, next) {
   
     jwt.verify(tokenWithoutBearer, secretKey, (err, user) => {
       if (err) {
-        console.error('Token verification error:', err);
-        return res.status(403).json({ error: 'Token is not valid or expired' });
+        return res.status(403).json({ error: 'Forbidden - Invalid token' });
       }
   
       req.user = user;
       next();
     });
-  }
+}
 
-
-
-  const oauth2Client = new OAuth2(
+const oauth2Client = new OAuth2(
     process.env.CLIENT_ID,
     process.env.CLIENT_SECRET,
-    process.env.REDIRECT_URL
+    process.env.REDIRECT_URI
 );
 
-oauth2Client.setCredentials({
-    refresh_token: process.env.REFRESH_TOKEN
-});
+oauth2Client.setCredentials({ refresh_token: process.env.REFRESH_TOKEN });
+
+const accessToken = oauth2Client.getAccessToken();
 
 const transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
         type: 'OAuth2',
-        user: process.env.EMAIL,
+        user: process.env.USER,
         clientId: process.env.CLIENT_ID,
         clientSecret: process.env.CLIENT_SECRET,
         refreshToken: process.env.REFRESH_TOKEN,
-        accessToken: oauth2Client.getAccessToken()
-    }
+        accessToken: accessToken,
+    },
 });
 
-app.post('/send-email', (req, res) => {
-    console.log(req)
-
+app.post('/send-email', async (req, res) => {
+    const { to, subject, text } = req.body;
+    console.log(req.body)
     const mailOptions = {
-        from: req.body.email,
-        to: process.env.EMAIL, // Replace with your receiving email
-        subject: 'New Contact Form Submission',
-        text: `
-        First Name: ${req.body.firstName}
-        Last Name: ${req.body.lastName}
-        Email: ${req.body.email}
-        Phone: ${req.body.phone}
-        Dates: ${req.body.dates}
-        Travelers: ${req.body.travelers}
-        Num. Rooms: ${req.body.rooms}
-        Message: ${req.body.description}
-        `
+        from: process.env.USER,
+        to,
+        subject,
+        text,
     };
 
-    transporter.sendMail(mailOptions, (error, info) => {
-        if (error) {
-            console.error('Error sending email:', error);
-            return res.status(500).send(error.toString());
+    transporter.sendMail(mailOptions, (err, info) => {
+        if (err) {
+            console.error(err);
+            res.status(500).send('Error sending email');
+        } else {
+            console.log('Email sent: ' + info.response);
+            res.status(200).send('Email sent successfully');
         }
-        console.log('Email sent:', info.response);
-        res.status(200).send('Email sent: ' + info.response);
     });
-});  
+});
+
+export default app;
