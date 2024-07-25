@@ -7,8 +7,8 @@ import bodyParser from 'body-parser';
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 import nodemailer from 'nodemailer';
-import { google } from 'googleapis';
-const { OAuth2 } = google.auth;
+import { OAuth2 } from 'google-auth-library';
+
 
 dotenv.config();
 
@@ -269,8 +269,7 @@ function authenticateToken(req, res, next) {
     });
   }
 
-//GMail Integration
-
+// GMail Integration
 const oauth2Client = new OAuth2(
     process.env.CLIENT_ID,
     process.env.CLIENT_SECRET,
@@ -281,6 +280,11 @@ oauth2Client.setCredentials({
     refresh_token: process.env.REFRESH_TOKEN
 });
 
+async function getAccessToken() {
+    const { token } = await oauth2Client.getAccessToken();
+    return token;
+}
+
 const transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
@@ -289,15 +293,14 @@ const transporter = nodemailer.createTransport({
         clientId: process.env.CLIENT_ID,
         clientSecret: process.env.CLIENT_SECRET,
         refreshToken: process.env.REFRESH_TOKEN,
-        accessToken: oauth2Client.getAccessToken()
+        accessToken: await getAccessToken()  // Ensure this is handled asynchronously
     }
 });
 
-app.post('/send-email', (req, res) => {
-
+app.post('/send-email', async (req, res) => {
     const mailOptions = {
         from: req.body.email,
-        to: process.env.EMAIL, // Replace with your receiving email
+        to: process.env.EMAIL,
         subject: 'New Contact Form Submission',
         text: `
         First Name: ${req.body.firstName}
@@ -311,12 +314,12 @@ app.post('/send-email', (req, res) => {
         `
     };
 
-    transporter.sendMail(mailOptions, (error, info) => {
-        if (error) {
-            console.error('Error sending email:', error);
-            return res.status(500).send(error.toString());
-        }
+    try {
+        const info = await transporter.sendMail(mailOptions);
         console.log('Email sent:', info.response);
         res.status(200).send('Email sent: ' + info.response);
-    });
-});  
+    } catch (error) {
+        console.error('Error sending email:', error);
+        res.status(500).send(error.toString());
+    }
+});
