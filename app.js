@@ -6,10 +6,11 @@ import cors from 'cors';
 import bodyParser from 'body-parser';
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
-import nodemailer from 'nodemailer';
-import { google } from 'googleapis';
+import { SESClient, SendEmailCommand } from "@aws-sdk/client-ses";
 
-const { OAuth2 } = google.auth;
+// import nodemailer from 'nodemailer';
+// import { google } from 'googleapis';
+// const { OAuth2 } = google.auth;
 
 dotenv.config();
 
@@ -237,55 +238,122 @@ function authenticateToken(req, res, next) {
     });
 }
 
-// Gmail Integration
-
-const oauth2Client = new OAuth2(
-    process.env.CLIENT_ID,
-    process.env.CLIENT_SECRET,
-    process.env.REDIRECT_URL
-);
-
-oauth2Client.setCredentials({
-    refresh_token: process.env.REFRESH_TOKEN
-});
-
-const transporter = nodemailer.createTransport({
-    service: 'gmail',
-    auth: {
-        type: 'OAuth2',
-        user: process.env.EMAIL,
-        clientId: process.env.CLIENT_ID,
-        clientSecret: process.env.CLIENT_SECRET,
-        refreshToken: process.env.REFRESH_TOKEN,
-        accessToken: oauth2Client.getAccessToken()
+// Create an SES client
+const sesClient = new SESClient({
+    region: process.env.REGION,
+    credentials: {
+        accessKeyId: process.env.ACCESS_KEY,
+        secretAccessKey: process.env.SECRET_ACCESS_KEY
     }
 });
 
-app.post('/send-email', async (req, res) => {
-    const mailOptions = {
-        from: req.body.email,
-        to: process.env.EMAIL, // Replace with your receiving email
-        subject: 'New Contact Form Submission',
-        text: `
-        First Name: ${req.body.firstName}
-        Last Name: ${req.body.lastName}
-        Email: ${req.body.email}
-        Phone: ${req.body.phone}
-        Dates: ${req.body.dates}
-        Travelers: ${req.body.travelers}
-        Num. Rooms: ${req.body.rooms}
-        Message: ${req.body.description}
-        `
+const sendEmail = async (recipientEmail, req) => {
+    // Create sendEmail params
+    const params = {
+        Source: process.env.SES_SENDER,
+        Destination: {
+            ToAddresses: [
+                recipientEmail,
+            ],
+        },
+        Message: {
+            Body: {
+                Html: {
+                    Charset: "UTF-8",
+                    Data: `
+                    First Name: ${req.body.firstName}
+                    Last Name: ${req.body.lastName}
+                    Email: ${req.body.email}
+                    Phone: ${req.body.phone}
+                    Dates: ${req.body.dates}
+                    Travelers: ${req.body.travelers}
+                    Num. Rooms: ${req.body.rooms}
+                    Message: ${req.body.description}
+                    `,
+                },
+                Text: {
+                    Charset: "UTF-8",
+                    Data: "TEXT_FORMAT_BODY",
+                },
+            },
+            Subject: {
+                Charset: "UTF-8",
+                Data: `New Contact Form`,
+            },
+        },
+        ReplyToAddresses: [
+            process.env.SES_SENDER,
+        ],
     };
 
     try {
-        const accessToken = await oauth2Client.getAccessToken();
-        transporter.transporter.auth.accessToken = accessToken.token;
-        const info = await transporter.sendMail(mailOptions);
-        console.log('Email sent:', info.response);
-        res.status(200).send('Email sent: ' + info.response);
+        const command = new SendEmailCommand(params);
+        const res = await sesClient.send(command);
+        console.log("Email Sent: ", res);
     } catch (error) {
-        console.error('Error sending email:', error);
-        res.status(500).send(error.toString());
+        console.error("Error sending email: ", error);
+    }
+};
+
+app.post('/send-email', async (req, res) => {
+    try {
+        const data = await sendEmail('support@johnetravels.com', req);;
+        res.json(data);
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: 'Internal Server Error' });
     }
 });
+
+// // Gmail Integration
+
+// const oauth2Client = new OAuth2(
+//     process.env.CLIENT_ID,
+//     process.env.CLIENT_SECRET,
+//     process.env.REDIRECT_URL
+// );
+
+// oauth2Client.setCredentials({
+//     refresh_token: process.env.REFRESH_TOKEN
+// });
+
+// const transporter = nodemailer.createTransport({
+//     service: 'gmail',
+//     auth: {
+//         type: 'OAuth2',
+//         user: process.env.EMAIL,
+//         clientId: process.env.CLIENT_ID,
+//         clientSecret: process.env.CLIENT_SECRET,
+//         refreshToken: process.env.REFRESH_TOKEN,
+//         accessToken: oauth2Client.getAccessToken()
+//     }
+// });
+
+// app.post('/send-email', async (req, res) => {
+//     const mailOptions = {
+//         from: req.body.email,
+//         to: process.env.EMAIL, // Replace with your receiving email
+//         subject: 'New Contact Form Submission',
+//         text: `
+//         First Name: ${req.body.firstName}
+//         Last Name: ${req.body.lastName}
+//         Email: ${req.body.email}
+//         Phone: ${req.body.phone}
+//         Dates: ${req.body.dates}
+//         Travelers: ${req.body.travelers}
+//         Num. Rooms: ${req.body.rooms}
+//         Message: ${req.body.description}
+//         `
+//     };
+
+//     try {
+//         const accessToken = await oauth2Client.getAccessToken();
+//         transporter.transporter.auth.accessToken = accessToken.token;
+//         const info = await transporter.sendMail(mailOptions);
+//         console.log('Email sent:', info.response);
+//         res.status(200).send('Email sent: ' + info.response);
+//     } catch (error) {
+//         console.error('Error sending email:', error);
+//         res.status(500).send(error.toString());
+//     }
+// });
