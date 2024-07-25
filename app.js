@@ -281,8 +281,14 @@ oauth2Client.setCredentials({
 });
 
 async function getAccessToken() {
-    const { token } = await oauth2Client.getAccessToken();
-    return token;
+    try {
+        const { token } = await oauth2Client.getAccessToken();
+        console.log('Access Token:', token);  // Debug log
+        return token;
+    } catch (error) {
+        console.error('Error fetching access token:', error);
+        throw error;
+    }
 }
 
 const transporter = nodemailer.createTransport({
