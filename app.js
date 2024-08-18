@@ -8,10 +8,6 @@ import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 import { SESClient, SendEmailCommand } from "@aws-sdk/client-ses";
 
-// import nodemailer from 'nodemailer';
-// import { google } from 'googleapis';
-// const { OAuth2 } = google.auth;
-
 dotenv.config();
 
 const app = express();
@@ -74,7 +70,7 @@ app.get('/protected-route', authenticateToken, (req, res) => {
     res.json({ message: 'This is a protected route!' });
 });
 
-app.get('/api/victron/data', async (req, res) => {
+app.get('/api/victron/data', authenticateToken, async (req, res) => {
     try {
         const data = await fetchAllData();
         res.json(data);
@@ -304,56 +300,59 @@ app.post('/send-email', async (req, res) => {
         res.status(500).json({ error: 'Internal Server Error' });
     }
 });
+import Growatt from 'growatt';
 
-// // Gmail Integration
 
-// const oauth2Client = new OAuth2(
-//     process.env.CLIENT_ID,
-//     process.env.CLIENT_SECRET,
-//     process.env.REDIRECT_URL
-// );
+let growatt = new Growatt({});
+let isLoggedIn = false;
+let lastRequestTime = Date.now();
 
-// oauth2Client.setCredentials({
-//     refresh_token: process.env.REFRESH_TOKEN
-// });
+async function loginGrowatt() {
+  if (!isLoggedIn) {
+    await growatt.login(process.env.GROWATT_USER, process.env.GROWATT_PASSWORD);
+    isLoggedIn = true;
+    console.log("Growatt login complete")
+  }
+}
 
-// const transporter = nodemailer.createTransport({
-//     service: 'gmail',
-//     auth: {
-//         type: 'OAuth2',
-//         user: process.env.EMAIL,
-//         clientId: process.env.CLIENT_ID,
-//         clientSecret: process.env.CLIENT_SECRET,
-//         refreshToken: process.env.REFRESH_TOKEN,
-//         accessToken: oauth2Client.getAccessToken()
-//     }
-// });
+async function logoutGrowatt() {
+  if (isLoggedIn) {
+    await growatt.logout();
+    isLoggedIn = false;
+    console.log("Growatt logoff complete")
+  }
+}
 
-// app.post('/send-email', async (req, res) => {
-//     const mailOptions = {
-//         from: req.body.email,
-//         to: process.env.EMAIL, // Replace with your receiving email
-//         subject: 'New Contact Form Submission',
-//         text: `
-//         First Name: ${req.body.firstName}
-//         Last Name: ${req.body.lastName}
-//         Email: ${req.body.email}
-//         Phone: ${req.body.phone}
-//         Dates: ${req.body.dates}
-//         Travelers: ${req.body.travelers}
-//         Num. Rooms: ${req.body.rooms}
-//         Message: ${req.body.description}
-//         `
-//     };
+app.get('/api/growattData', authenticateToken, async (req, res) => {
+  try {
+    lastRequestTime = Date.now();
+    await loginGrowatt();
 
-//     try {
-//         const accessToken = await oauth2Client.getAccessToken();
-//         transporter.transporter.auth.accessToken = accessToken.token;
-//         const info = await transporter.sendMail(mailOptions);
-//         console.log('Email sent:', info.response);
-//         res.status(200).send('Email sent: ' + info.response);
-//     } catch (error) {
-//         console.error('Error sending email:', error);
-//         res.status(500).send(error.toString());
-//     }
-// });
+    let getAllPlantData = await growatt.getAllPlantData({});
+    
+    // Extract required data
+    const yolandaData = getAllPlantData['4466']['devices']['UKDFBHG0GX']['statusData'];
+    const casaMJData1 = getAllPlantData['25328']['devices']['XSK0CKS058']['statusData'];
+    const casaMJData2 = getAllPlantData['25328']['devices']['XSK0CKS03A']['statusData'];
+    const weatherDataYolanda = getAllPlantData['4466']['weather']['data']['HeWeather6'][0];
+    const weatherDataCasaMJ = getAllPlantData['25328']['weather']['data']['HeWeather6'][0];
+    
+    res.json({
+      yolandaData,
+      casaMJData1,
+      casaMJData2,
+      weatherDataYolanda,
+      weatherDataCasaMJ
+    });
+  } catch (e) {
+    console.error(e);
+    res.status(500).send('Internal Server Error');
+  }
+});
+
+// Periodically check if logout is needed
+setInterval(async () => {
+  if (Date.now() - lastRequestTime > 2 * 60 * 1000) { // 2 minutes
+    await logoutGrowatt();
+  }
+}, 30 * 1000); // Check every 30 seconds
