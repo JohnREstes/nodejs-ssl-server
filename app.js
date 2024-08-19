@@ -85,13 +85,10 @@ app.listen(port, () => {
     console.log(`[Version ${version}]: Server running at http://${hostname}:${port}/`);
 });
 
-let token = null;
-let tokenTimestamp = null;
-
 async function fetchAllData() {
     const usernameVic = process.env.USERNAME;
     const passwordVic = process.env.PASSWORD;
-    let idUser, idSite, data;
+    let token, idUser, idSite, data;
 
     try {
         await fetchData();
@@ -102,21 +99,21 @@ async function fetchAllData() {
     }
 
     async function fetchData() {
-        if (!token || isTokenExpired()) {
+        if (!token) {
             try {
                 await get_login_token();
                 await get_installations();
                 data = await get_Chart();
             } catch (error) {
-                console.error("Error fetching data after token renewal: ", error);
+                console.error(error);
                 throw error;
             }
         } else {
             try {
                 data = await get_Chart();
             } catch (error) {
-                token = null; // Clear token if an error occurs
-                console.error("Error fetching data with existing token: ", error);
+                token = null;
+                console.error(error);
                 throw error;
             }
         }
@@ -142,19 +139,16 @@ async function fetchAllData() {
         try {
             const response = await fetch("https://vrmapi.victronenergy.com/v2/auth/login/", requestOptions);
             const result = await response.json();
-            if (!result.token) throw new Error("Token not returned from login");
-
             token = result.token;
-            tokenTimestamp = Date.now();
             idUser = result.idUser;
         } catch (error) {
-            console.log('Error obtaining login token:', error);
+            console.log('error', error);
             throw error;
         }
     }
 
     async function get_installations() {
-        console.log("Getting Installation #");
+        console.log("Get Installation #");
         const headers = { 'X-Authorization': `Bearer ${token}` };
 
         const requestOptions = {
@@ -168,13 +162,13 @@ async function fetchAllData() {
             const result = await response.json();
             idSite = result.records[0].idSite;
         } catch (error) {
-            console.log('Error getting installations:', error);
+            console.log('error', error);
             throw error;
         }
     }
 
     async function get_Chart() {
-        console.log("Getting Chart Data");
+        console.log("Get Chart");
         const headers = { 'X-Authorization': `Bearer ${token}` };
 
         const requestOptions = {
@@ -186,6 +180,8 @@ async function fetchAllData() {
         try {
             const response = await fetch(`https://vrmapi.victronenergy.com/v2/installations/${idSite}/diagnostics`, requestOptions);
             const result = await response.json();
+            //fs.writeFileSync('plantData.json', JSON.stringify(result, null, 2));
+            //console.log('Data written to plantData.json');
 
             if (!result.success) {
                 throw new Error('The returned response did not indicate success.');
@@ -201,9 +197,9 @@ async function fetchAllData() {
                 51, // State of charge
                 94, // Daily Yield
                 96, // Yesterday's Daily Yield
-                146, // TimeToGo
+                146, //TimeToGo
                 442, // PV Power
-                243, // Battery Power
+                243, //Battery Power
             ]);
 
             const dataArray = result.records
@@ -217,14 +213,9 @@ async function fetchAllData() {
 
             return dataArray;
         } catch (error) {
-            console.log('Error getting chart data:', error);
+            console.log('error', error);
             throw error;
         }
-    }
-
-    function isTokenExpired() {
-        const tokenValidityDuration = 3600 * 1000; // 1 hour in milliseconds
-        return !tokenTimestamp || (Date.now() - tokenTimestamp) > tokenValidityDuration;
     }
 }
 
