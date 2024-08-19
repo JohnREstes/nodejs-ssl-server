@@ -7,6 +7,7 @@ import bodyParser from 'body-parser';
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 import { SESClient, SendEmailCommand } from "@aws-sdk/client-ses";
+import fs from 'fs'
 
 dotenv.config();
 
@@ -179,6 +180,8 @@ async function fetchAllData() {
         try {
             const response = await fetch(`https://vrmapi.victronenergy.com/v2/installations/${idSite}/diagnostics`, requestOptions);
             const result = await response.json();
+            //fs.writeFileSync('plantData.json', JSON.stringify(result, null, 2));
+            //console.log('Data written to plantData.json');
 
             if (!result.success) {
                 throw new Error('The returned response did not indicate success.');
@@ -194,7 +197,9 @@ async function fetchAllData() {
                 51, // State of charge
                 94, // Daily Yield
                 96, // Yesterday's Daily Yield
+                146, //TimeToGo
                 442, // PV Power
+                243, //Battery Power
             ]);
 
             const dataArray = result.records
@@ -334,6 +339,9 @@ app.get('/api/growattData', authenticateToken, async (req, res) => {
     const yolandaData = getAllPlantData['4466']['devices']['UKDFBHG0GX']['statusData'];
     const casaMJData1 = getAllPlantData['25328']['devices']['XSK0CKS058']['statusData'];
     const casaMJData2 = getAllPlantData['25328']['devices']['XSK0CKS03A']['statusData'];
+    const yolandaDataTotal = getAllPlantData['4466']['devices']['UKDFBHG0GX']['totalData'];
+    const casaMJData1Total = getAllPlantData['25328']['devices']['XSK0CKS058']['totalData'];
+    const casaMJData2Total = getAllPlantData['25328']['devices']['XSK0CKS03A']['totalData'];
     const weatherDataYolanda = getAllPlantData['4466']['weather']['data']['HeWeather6'][0];
     const weatherDataCasaMJ = getAllPlantData['25328']['weather']['data']['HeWeather6'][0];
     
@@ -341,6 +349,9 @@ app.get('/api/growattData', authenticateToken, async (req, res) => {
       yolandaData,
       casaMJData1,
       casaMJData2,
+      yolandaDataTotal,
+      casaMJData1Total,
+      casaMJData2Total,
       weatherDataYolanda,
       weatherDataCasaMJ
     });
