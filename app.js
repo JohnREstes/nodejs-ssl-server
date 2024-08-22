@@ -414,7 +414,7 @@ const writeDataToFile = async () => {
 };
 
 // Schedule the task to run at 7:30 PM Cancun Time
-cron.schedule('30 19 * * *', async () => {
+cron.schedule('30 18 * * *', async () => {
     await writeDataToFile();
 }, {
     timezone: "America/Cancun"
