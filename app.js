@@ -103,7 +103,7 @@ async function fetchVictronData() {
     // Check if cached data is valid
     if (victronCache.data && (currentTime - victronCache.timestamp) < CACHE_TIMEOUT) {
         console.log("Returning cached Victron data");
-        return cache.data;
+        return victronCache.data;
     }
 
     const usernameVic = process.env.USERNAME;
