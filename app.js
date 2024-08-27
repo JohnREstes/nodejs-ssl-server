@@ -158,7 +158,8 @@ async function fetchVictronData() {
             const result = await response.json();
             victronToken = result.token;
             idUserVictron = result.idUser;
-            console.log(`User Id: ${idUserVictron}`)
+            console.log(`Victron login Complete
+                        User Id: ${idUserVictron}`)
         } catch (error) {
             console.log('error', error);
             throw error;
