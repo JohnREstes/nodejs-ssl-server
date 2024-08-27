@@ -10,6 +10,7 @@ import { SESClient, SendEmailCommand } from "@aws-sdk/client-ses";
 import fs from 'fs'
 import cron from 'node-cron';
 import moment from 'moment-timezone';
+import Growatt from 'growatt';
 
 dotenv.config();
 
@@ -17,9 +18,11 @@ const app = express();
 const hostname = '127.0.0.1';
 const port = 3000;
 
+const CACHE_TIMEOUT = 30 * 1000; // 30 seconds in milliseconds
+
 const secretKey = process.env.SECRET_KEY;
 const hashedPassword = process.env.HASHED_PASSWORD;
-const version = '1.5.0';
+const version = '1.4.3';
 
 const corsOptions = {
     origin: '*',
@@ -75,7 +78,7 @@ app.get('/protected-route', authenticateToken, (req, res) => {
 
 app.get('/api/victron/data', authenticateToken, async (req, res) => {
     try {
-        const data = await fetchAllData();
+        const data = await fetchVictronData();
         res.json(data);
     } catch (error) {
         console.error(error);
@@ -87,34 +90,47 @@ app.listen(port, () => {
     console.log(`[Version ${version}]: Server running at http://${hostname}:${port}/`);
 });
 
-async function fetchAllData() {
+let victronCache = {
+    data: null,
+    timestamp: 0
+};
+
+var victronToken, idUserVictron, idSiteVictron;
+
+async function fetchVictronData() {
+    const currentTime = Date.now();
+
+    // Check if cached data is valid
+    if (victronCache.data && (currentTime - victronCache.timestamp) < CACHE_TIMEOUT) {
+        console.log("Returning cached Victron data");
+        return cache.data;
+    }
+
     const usernameVic = process.env.USERNAME;
     const passwordVic = process.env.PASSWORD;
-    let token, idUser, idSite, data;
 
     try {
         await fetchData();
-        return data;
     } catch (error) {
         console.error(error);
         throw error;
     }
 
     async function fetchData() {
-        if (!token) {
+        if (!victronToken) {
             try {
                 await get_login_token();
                 await get_installations();
-                data = await get_Chart();
+                await get_Chart();
             } catch (error) {
                 console.error(error);
                 throw error;
             }
         } else {
             try {
-                data = await get_Chart();
+                await get_Chart();
             } catch (error) {
-                token = null;
+                victronToken = null;
                 console.error(error);
                 throw error;
             }
@@ -141,9 +157,8 @@ async function fetchAllData() {
         try {
             const response = await fetch("https://vrmapi.victronenergy.com/v2/auth/login/", requestOptions);
             const result = await response.json();
-            token = result.token;
-            idUser = result.idUser;
-            console
+            victronToken = result.token;
+            idUserVictron = result.idUser;
         } catch (error) {
             console.log('error', error);
             throw error;
@@ -152,7 +167,7 @@ async function fetchAllData() {
 
     async function get_installations() {
         console.log("Get Installation #");
-        const headers = { 'X-Authorization': `Bearer ${token}` };
+        const headers = { 'X-Authorization': `Bearer ${victronToken}` };
 
         const requestOptions = {
             method: 'GET',
@@ -161,10 +176,10 @@ async function fetchAllData() {
         };
 
         try {
-            const response = await fetch(`https://vrmapi.victronenergy.com/v2/users/${idUser}/installations`, requestOptions);
+            const response = await fetch(`https://vrmapi.victronenergy.com/v2/users/${idUserVictron}/installations`, requestOptions);
             const result = await response.json();
-            idSite = result.records[0].idSite;
-            console.log(idSite)
+            idSiteVictron = result.records[0].idSite;
+            console.log(idSiteVictron)
         } catch (error) {
             console.log('error', error);
             throw error;
@@ -173,7 +188,7 @@ async function fetchAllData() {
 
     async function get_Chart() {
         console.log("Get Chart");
-        const headers = { 'X-Authorization': `Bearer ${token}` };
+        const headers = { 'X-Authorization': `Bearer ${victronToken}` };
 
         const requestOptions = {
             method: 'GET',
@@ -182,7 +197,7 @@ async function fetchAllData() {
         };
 
         try {
-            const response = await fetch(`https://vrmapi.victronenergy.com/v2/installations/${idSite}/diagnostics`, requestOptions);
+            const response = await fetch(`https://vrmapi.victronenergy.com/v2/installations/${idSiteVictron}/diagnostics`, requestOptions);
             const result = await response.json();
             //fs.writeFileSync('plantData.json', JSON.stringify(result, null, 2));
             //console.log('Data written to plantData.json');
@@ -206,7 +221,7 @@ async function fetchAllData() {
                 243, //Battery Power
             ]);
 
-            const dataArray = result.records
+            const newVictronData = result.records
                 .filter(record => desiredAttributes.has(record.idDataAttribute))
                 .map(record => ({
                     idDataAttribute: record.idDataAttribute,
@@ -215,7 +230,11 @@ async function fetchAllData() {
                     timestamp: record.timestamp
                 }));
 
-            return dataArray;
+            // Update cache with new data and timestamp
+            cache.data = newVictronData;
+            cache.timestamp = currentTime;    
+
+            return newVictronData;
         } catch (error) {
             console.log('error', error);
             throw error;
@@ -309,7 +328,6 @@ app.post('/send-email', async (req, res) => {
         res.status(500).json({ error: 'Internal Server Error' });
     }
 });
-import Growatt from 'growatt';
 
 
 let growatt = new Growatt({});
@@ -342,13 +360,29 @@ app.get('/api/growattData', authenticateToken, async (req, res) => {
     }
 });
 
+let growattCache = {
+    data: null,
+    timestamp: 0
+};
+
+
+
 async function getGrowattData() {
+
+    const currentTime = Date.now();
+
+    // Check if cached data is valid
+    if (growattCache.data && (currentTime - growattCache.timestamp) < CACHE_TIMEOUT) {
+        console.log("Returning cached Growatt data");
+        return growattCache.data;
+    }
+
     try {
         await loginGrowatt();
 
         let getAllPlantData = await growatt.getAllPlantData({});
 
-        // Extract required data
+        // Extract data
         const yolandaData = getAllPlantData['4466']['devices']['UKDFBHG0GX']['statusData'];
         const casaMJData1 = getAllPlantData['25328']['devices']['XSK0CKS058']['statusData'];
         const casaMJData2 = getAllPlantData['25328']['devices']['XSK0CKS03A']['statusData'];
@@ -358,7 +392,7 @@ async function getGrowattData() {
         const weatherDataYolanda = getAllPlantData['4466']['weather']['data']['HeWeather6'][0];
         const weatherDataCasaMJ = getAllPlantData['25328']['weather']['data']['HeWeather6'][0];
 
-        return {
+        const newGrowattData = {
             yolandaData,
             casaMJData1,
             casaMJData2,
@@ -368,6 +402,12 @@ async function getGrowattData() {
             weatherDataYolanda,
             weatherDataCasaMJ
         };
+
+        // Update cache with new data and timestamp
+        growattCache.data = newGrowattData;
+        growattCache.timestamp = currentTime;
+
+        return newGrowattData;
     } catch (e) {
         console.error('Error fetching Growatt data:', e);
         throw e;
@@ -389,7 +429,7 @@ const writeDataToFile = async () => {
     const currentDate = moment().tz(timeZone).format('YYYY-MM-DD');
     
     try {
-        const data1 = await fetchAllData();
+        const data1 = await fetchVictronData();
         const data2 = await getGrowattData();
 
         const towerDayTotal = data1[4]['formattedValue'] || 'Data not available';
