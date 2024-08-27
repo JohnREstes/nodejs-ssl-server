@@ -231,8 +231,8 @@ async function fetchVictronData() {
                 }));
 
             // Update cache with new data and timestamp
-            cache.data = newVictronData;
-            cache.timestamp = currentTime;    
+            victronCache.data = newVictronData;
+            victronCache.timestamp = currentTime;    
 
             return newVictronData;
         } catch (error) {
