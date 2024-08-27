@@ -102,7 +102,6 @@ async function fetchVictronData() {
 
     // Check if cached data is valid
     if (victronCache.data && (currentTime - victronCache.timestamp) < CACHE_TIMEOUT) {
-        console.log("Returning cached Victron data");
         return victronCache.data;
     }
 
@@ -159,6 +158,7 @@ async function fetchVictronData() {
             const result = await response.json();
             victronToken = result.token;
             idUserVictron = result.idUser;
+            console.log(`User Id: ${idUserVictron}`)
         } catch (error) {
             console.log('error', error);
             throw error;
@@ -166,7 +166,6 @@ async function fetchVictronData() {
     }
 
     async function get_installations() {
-        console.log("Get Installation #");
         const headers = { 'X-Authorization': `Bearer ${victronToken}` };
 
         const requestOptions = {
@@ -179,7 +178,7 @@ async function fetchVictronData() {
             const response = await fetch(`https://vrmapi.victronenergy.com/v2/users/${idUserVictron}/installations`, requestOptions);
             const result = await response.json();
             idSiteVictron = result.records[0].idSite;
-            console.log(idSiteVictron)
+            console.log(`Site Id: ${idSiteVictron}`)
         } catch (error) {
             console.log('error', error);
             throw error;
@@ -187,7 +186,6 @@ async function fetchVictronData() {
     }
 
     async function get_Chart() {
-        console.log("Get Chart");
         const headers = { 'X-Authorization': `Bearer ${victronToken}` };
 
         const requestOptions = {
@@ -373,7 +371,6 @@ async function getGrowattData() {
 
     // Check if cached data is valid
     if (growattCache.data && (currentTime - growattCache.timestamp) < CACHE_TIMEOUT) {
-        console.log("Returning cached Growatt data");
         return growattCache.data;
     }
 
