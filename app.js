@@ -104,7 +104,7 @@ let cachedData = {
   // Function to check if it's within active hours (0500 - 2300)
   function checkActiveHours() {
     const now = new Date();
-    const currentHour = now.getUTCHours();  // Adjust based on timezone
+    const currentHour = now.getUTCHours() - 5;  // Adjust based on timezone
   
     // Set to active if it's within 0500 - 2300
     isActiveHours = (currentHour >= 5 && currentHour < 23);
