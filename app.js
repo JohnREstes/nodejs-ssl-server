@@ -88,7 +88,65 @@ app.get('/api/victron/data', authenticateToken, async (req, res) => {
 
 app.listen(port, () => {
     console.log(`[Version ${version}]: Server running at http://${hostname}:${port}/`);
+      // Initial data load on server startup
+  checkActiveHours();
+  updateCachedData();
 });
+
+let cachedData = {
+    growatt: null,
+    victron: null
+  };
+  
+  // A flag to track active hours (0500 - 2300)
+  let isActiveHours = false;
+  
+  // Function to check if it's within active hours (0500 - 2300)
+  function checkActiveHours() {
+    const now = new Date();
+    const currentHour = now.getUTCHours();  // Adjust based on timezone
+  
+    // Set to active if it's within 0500 - 2300
+    isActiveHours = (currentHour >= 5 && currentHour < 23);
+  }
+  
+  // Function to update cached data
+  async function updateCachedData() {
+    if (isActiveHours) {
+      try {
+        console.log('Fetching new data...');
+  
+        // Fetch and cache Growatt data
+        const growattData = await getGrowattData();
+        cachedData.growatt = growattData;
+  
+        // Fetch and cache Victron data
+        const victronData = await fetchVictronData();
+        cachedData.victron = victronData;
+  
+        console.log('Data cache updated.');
+  
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    } else {
+      console.log('Outside active hours. Skipping data refresh.');
+    }
+  }
+  
+  // Schedule data updates every 2.5 minutes (150,000 milliseconds)
+  setInterval(() => {
+    checkActiveHours();
+    updateCachedData();
+  }, 150000);  // 2.5 minutes
+  
+  // Endpoint to serve cached data
+  app.get('/api/cachedData', authenticateToken, (req, res) => {
+    res.json({
+      growatt: cachedData.growatt,
+      victron: cachedData.victron
+    });
+  });
 
 let victronCache = {
     data: null,
@@ -363,8 +421,6 @@ let growattCache = {
     timestamp: 0
 };
 
-
-
 async function getGrowattData() {
 
     const currentTime = Date.now();
@@ -413,7 +469,7 @@ async function getGrowattData() {
 
 // Periodically check if logout is needed
 setInterval(async () => {
-  if (Date.now() - lastRequestTime > 2 * 60 * 1000) { // 2 minutes
+  if (Date.now() - lastRequestTime > 4 * 60 * 1000) { // 2 minutes
     await logoutGrowatt();
   }
 }, 30 * 1000); // Check every 30 seconds
@@ -450,7 +506,7 @@ const writeDataToFile = async () => {
     }
 };
 
-// Schedule the task to run at 7:30 PM Cancun Time
+// Schedule the task to run at 5:58 PM Cancun Time
 cron.schedule('58 17 * * *', async () => {
     await writeDataToFile();
 }, {
