@@ -469,10 +469,10 @@ async function getGrowattData() {
 
 // Periodically check if logout is needed
 setInterval(async () => {
-  if (Date.now() - lastRequestTime > 4 * 60 * 1000) { // 2 minutes
+  if (Date.now() - lastRequestTime > 5 * 60 * 1000) { // 5 minutes
     await logoutGrowatt();
   }
-}, 30 * 1000); // Check every 30 seconds
+}, 5 * 60 * 1000); // Check every 5 Minutes
 
 
 
