@@ -391,19 +391,17 @@ let isLoggedIn = false;
 let lastRequestTime = Date.now();
 
 async function loginGrowatt() {
-  if (!isLoggedIn) {
+    if (isLoggedIn) return;
     await growatt.login(process.env.GROWATT_USER, process.env.GROWATT_PASSWORD);
     isLoggedIn = true;
     console.log("Growatt login complete")
-  }
 }
 
 async function logoutGrowatt() {
-  if (isLoggedIn) {
+    if (!isLoggedIn) return;
     await growatt.logout();
     isLoggedIn = false;
     console.log("Growatt logoff complete")
-  }
 }
 
 app.get('/api/growattData', authenticateToken, async (req, res) => {
@@ -463,16 +461,17 @@ async function getGrowattData() {
         return newGrowattData;
     } catch (e) {
         console.error('Error fetching Growatt data:', e);
+        isLoggedIn = false;
         throw e;
     }
 }
 
 // Periodically check if logout is needed
-setInterval(async () => {
-  if (Date.now() - lastRequestTime > 5 * 60 * 1000) { // 5 minutes
-    await logoutGrowatt();
-  }
-}, 5 * 60 * 1000); // Check every 5 Minutes
+// setInterval(async () => {
+//   if (Date.now() - lastRequestTime > 5 * 60 * 1000) { // 5 minutes
+//     await logoutGrowatt();
+//   }
+// }, 5 * 60 * 1000); // Check every 5 Minutes
 
 
 
