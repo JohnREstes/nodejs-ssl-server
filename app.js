@@ -114,7 +114,6 @@ let cachedData = {
   async function updateCachedData() {
     if (isActiveHours) {
       try {
-        console.log('Fetching new data...');
   
         // Fetch and cache Growatt data
         const growattData = await getGrowattData();
@@ -124,7 +123,8 @@ let cachedData = {
         const victronData = await fetchVictronData();
         cachedData.victron = victronData;
   
-        console.log('Data cache updated.');
+        if (cachedData.growatt && cachedData.victron) console.log('Data cache updated.');
+        else console.log('Data cache error.');
   
       } catch (error) {
         console.error('Error fetching data:', error);
@@ -156,6 +156,7 @@ let victronCache = {
 var victronToken, idUserVictron, idSiteVictron;
 
 async function fetchVictronData() {
+    var newVictronData = null;
     const currentTime = Date.now();
 
     // Check if cached data is valid
@@ -277,7 +278,7 @@ async function fetchVictronData() {
                 243, //Battery Power
             ]);
 
-            const newVictronData = result.records
+            newVictronData = result.records
                 .filter(record => desiredAttributes.has(record.idDataAttribute))
                 .map(record => ({
                     idDataAttribute: record.idDataAttribute,
@@ -289,13 +290,14 @@ async function fetchVictronData() {
             // Update cache with new data and timestamp
             victronCache.data = newVictronData;
             victronCache.timestamp = currentTime;    
-
+            
             return newVictronData;
         } catch (error) {
             console.log('error', error);
             throw error;
         }
     }
+    return newVictronData;
 }
 
 function authenticateToken(req, res, next) {
