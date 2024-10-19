@@ -22,7 +22,7 @@ const CACHE_TIMEOUT = 30 * 1000; // 30 seconds in milliseconds
 
 const secretKey = process.env.SECRET_KEY;
 const hashedPassword = process.env.HASHED_PASSWORD;
-const version = '1.4.3';
+const version = '2.0.1';
 
 const corsOptions = {
     origin: '*',
@@ -93,7 +93,7 @@ app.listen(port, () => {
   updateCachedData();
 });
 
-let cachedData = {
+var cachedData = {
     growatt: null,
     victron: null
   };
@@ -112,25 +112,14 @@ let cachedData = {
   
   // Function to update cached data
   async function updateCachedData() {
-    if (isActiveHours) {
-      try {
-  
-        // Fetch and cache Growatt data
-        const growattData = await getGrowattData();
-        cachedData.growatt = growattData;
-  
-        // Fetch and cache Victron data
-        const victronData = await fetchVictronData();
-        cachedData.victron = victronData;
-  
-        if (cachedData.growatt && cachedData.victron) console.log('Data cache updated.');
-        else console.log('Data cache error.');
-  
-      } catch (error) {
+    if (!isActiveHours) return;
+    try {
+        // Fetch and cache Growatt data (internal in called function)
+        await getGrowattData();
+        // Fetch and cache Victron data (internal in called function)
+        await fetchVictronData();
+    } catch (error) {
         console.error('Error fetching data:', error);
-      }
-    } else {
-      console.log('Outside active hours. Skipping data refresh.');
     }
   }
   
@@ -148,51 +137,49 @@ let cachedData = {
     });
   });
 
-let victronCache = {
-    data: null,
-    timestamp: 0
-};
 
 var victronToken, idUserVictron, idSiteVictron;
 
 async function fetchVictronData() {
-    var newVictronData = null;
+    let victronCache = {
+        data: null,
+        timestamp: 0
+    };
     const currentTime = Date.now();
 
     // Check if cached data is valid
     if (victronCache.data && (currentTime - victronCache.timestamp) < CACHE_TIMEOUT) {
+        cachedData.victron = victronCache.data;
         return victronCache.data;
     }
 
     const usernameVic = process.env.USERNAME;
     const passwordVic = process.env.PASSWORD;
 
-    try {
-        await fetchData();
-    } catch (error) {
-        console.error(error);
-        throw error;
-    }
+    fetchData()
 
     async function fetchData() {
+        var victronData = null;
         if (!victronToken) {
             try {
                 await get_login_token();
                 await get_installations();
-                await get_Chart();
+                victronData = await get_Chart();
             } catch (error) {
                 console.error(error);
                 throw error;
             }
         } else {
             try {
-                await get_Chart();
+                victronData = await get_Chart();
             } catch (error) {
                 victronToken = null;
                 console.error(error);
                 throw error;
             }
         }
+        cachedData.victron = victronData;
+        return victronData
     }
 
     async function get_login_token() {
@@ -217,7 +204,7 @@ async function fetchVictronData() {
             const result = await response.json();
             victronToken = result.token;
             idUserVictron = result.idUser;
-            console.log(`Victron login Complete\nUser Id: ${idUserVictron}`);
+            console.log(`Victron login Complete\n   User Id: ${idUserVictron}`);
         } catch (error) {
             console.log('error', error);
             throw error;
@@ -237,7 +224,7 @@ async function fetchVictronData() {
             const response = await fetch(`https://vrmapi.victronenergy.com/v2/users/${idUserVictron}/installations`, requestOptions);
             const result = await response.json();
             idSiteVictron = result.records[0].idSite;
-            console.log(`Site Id: ${idSiteVictron}`)
+            console.log(`   Site Id: ${idSiteVictron}`)
         } catch (error) {
             console.log('error', error);
             throw error;
@@ -278,7 +265,7 @@ async function fetchVictronData() {
                 243, //Battery Power
             ]);
 
-            newVictronData = result.records
+            const newVictronData = result.records
                 .filter(record => desiredAttributes.has(record.idDataAttribute))
                 .map(record => ({
                     idDataAttribute: record.idDataAttribute,
@@ -297,7 +284,6 @@ async function fetchVictronData() {
             throw error;
         }
     }
-    return newVictronData;
 }
 
 function authenticateToken(req, res, next) {
@@ -390,13 +376,13 @@ app.post('/send-email', async (req, res) => {
 
 let growatt = new Growatt({});
 let isLoggedIn = false;
-let lastRequestTime = Date.now();
 
 async function loginGrowatt() {
     if (isLoggedIn) return;
     await growatt.login(process.env.GROWATT_USER, process.env.GROWATT_PASSWORD);
     isLoggedIn = true;
     console.log("Growatt login complete")
+    return;
 }
 
 async function logoutGrowatt() {
@@ -408,7 +394,6 @@ async function logoutGrowatt() {
 
 app.get('/api/growattData', authenticateToken, async (req, res) => {
     try {
-        lastRequestTime = Date.now();
         const data = await getGrowattData();
         res.json(data);
     } catch (e) {
@@ -427,6 +412,7 @@ async function getGrowattData() {
 
     // Check if cached data is valid
     if (growattCache.data && (currentTime - growattCache.timestamp) < CACHE_TIMEOUT) {
+        cachedData.growatt = growattCache.data;
         return growattCache.data;
     }
 
@@ -460,6 +446,7 @@ async function getGrowattData() {
         growattCache.data = newGrowattData;
         growattCache.timestamp = currentTime;
 
+        cachedData.growatt = newGrowattData;
         return newGrowattData;
     } catch (e) {
         console.error('Error fetching Growatt data:', e);
