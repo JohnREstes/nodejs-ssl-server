@@ -156,7 +156,7 @@ async function fetchVictronData() {
     const usernameVic = process.env.USERNAME;
     const passwordVic = process.env.PASSWORD;
 
-    fetchData()
+    return await fetchData()
 
     async function fetchData() {
         var victronData = null;
