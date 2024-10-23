@@ -271,7 +271,8 @@ async function fetchVictronData() {
                     idDataAttribute: record.idDataAttribute,
                     description: record.description,
                     formattedValue: record.formattedValue,
-                    timestamp: record.timestamp
+                    timestamp: record.timestamp,
+                    instance: record.instance
                 }));
 
             // Update cache with new data and timestamp

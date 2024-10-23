@@ -3,7 +3,7 @@
   "records": [
     {
       "idSite": 462082,
-      "timestamp": 1723991257,
+      "timestamp": 1729701511,
       "Device": "Gateway",
       "instance": 0,
       "idDataAttribute": 1,
@@ -45,7 +45,7 @@
     },
     {
       "idSite": 462082,
-      "timestamp": 1723991257,
+      "timestamp": 1729701511,
       "Device": "Gateway",
       "instance": 0,
       "idDataAttribute": 386,
@@ -61,7 +61,7 @@
     },
     {
       "idSite": 462082,
-      "timestamp": 1723991257,
+      "timestamp": 1729701511,
       "Device": "Gateway",
       "instance": 0,
       "idDataAttribute": 387,
@@ -77,7 +77,7 @@
     },
     {
       "idSite": 462082,
-      "timestamp": 1723991257,
+      "timestamp": 1729701511,
       "Device": "Gateway",
       "instance": 0,
       "idDataAttribute": 2,
@@ -87,13 +87,13 @@
       "dbusPath": null,
       "code": "v",
       "bitmask": 0,
-      "formattedValue": "v3.41",
-      "rawValue": "v3.41",
+      "formattedValue": "v3.42",
+      "rawValue": "v3.42",
       "id": 4
     },
     {
       "idSite": 462082,
-      "timestamp": 1723991257,
+      "timestamp": 1729701511,
       "Device": "Gateway",
       "instance": 0,
       "idDataAttribute": 3,
@@ -103,13 +103,13 @@
       "dbusPath": null,
       "code": "build",
       "bitmask": 0,
-      "formattedValue": "20240730130421",
-      "rawValue": "20240730130421",
+      "formattedValue": "20240910081535",
+      "rawValue": "20240910081535",
       "id": 5
     },
     {
       "idSite": 462082,
-      "timestamp": 1723991257,
+      "timestamp": 1729701511,
       "Device": "Gateway",
       "instance": 0,
       "idDataAttribute": 453,
@@ -171,7 +171,7 @@
     },
     {
       "idSite": 462082,
-      "timestamp": 1723991312,
+      "timestamp": 1729702509,
       "Device": "Gateway",
       "instance": 0,
       "idDataAttribute": 985,
@@ -205,7 +205,7 @@
     },
     {
       "idSite": 462082,
-      "timestamp": 1723991257,
+      "timestamp": 1729701511,
       "Device": "Gateway",
       "instance": 0,
       "idDataAttribute": 237,
@@ -275,7 +275,7 @@
     },
     {
       "idSite": 462082,
-      "timestamp": 1723991274,
+      "timestamp": 1729702509,
       "Device": "Gateway",
       "instance": 0,
       "idDataAttribute": 154,
@@ -301,7 +301,7 @@
     },
     {
       "idSite": 462082,
-      "timestamp": 1723991347,
+      "timestamp": 1729702509,
       "Device": "Gateway",
       "instance": 0,
       "idDataAttribute": 543,
@@ -311,13 +311,13 @@
       "dbusPath": "/Settings/System/RemoteSupportIpAndPort",
       "code": "rsIpPort",
       "bitmask": 0,
-      "formattedValue": "35.165.124.40;34380",
-      "rawValue": "35.165.124.40;34380",
+      "formattedValue": "35.165.124.40;25434",
+      "rawValue": "35.165.124.40;25434",
       "id": 10
     },
     {
       "idSite": 462082,
-      "timestamp": 1724023347,
+      "timestamp": 1729710463,
       "Device": "Gateway",
       "instance": 0,
       "idDataAttribute": 148,
@@ -327,13 +327,13 @@
       "dbusPath": null,
       "code": "ipr",
       "bitmask": 0,
-      "formattedValue": "138.84.54.151",
-      "rawValue": "138.84.54.151",
+      "formattedValue": "129.222.201.183",
+      "rawValue": "129.222.201.183",
       "id": 11
     },
     {
       "idSite": 462082,
-      "timestamp": 1723991274,
+      "timestamp": 1729702509,
       "Device": "Gateway",
       "instance": 0,
       "idDataAttribute": 149,
@@ -343,13 +343,13 @@
       "dbusPath": null,
       "code": "ip",
       "bitmask": 0,
-      "formattedValue": "",
-      "rawValue": "",
+      "formattedValue": "192.168.2.71",
+      "rawValue": "192.168.2.71",
       "id": 12
     },
     {
       "idSite": 462082,
-      "timestamp": 1724023347,
+      "timestamp": 1729710463,
       "Device": "Gateway",
       "instance": 0,
       "idDataAttribute": 577,
@@ -365,7 +365,7 @@
     },
     {
       "idSite": 462082,
-      "timestamp": 1723991274,
+      "timestamp": 1729702509,
       "Device": "Gateway",
       "instance": 0,
       "idDataAttribute": 150,
@@ -375,8 +375,8 @@
       "dbusPath": "/Settings/System/AutoUpdate",
       "code": "au",
       "bitmask": 0,
-      "formattedValue": "On",
-      "rawValue": 1,
+      "formattedValue": "Check",
+      "rawValue": 2,
       "dataAttributeEnumValues": [
         {
           "nameEnum": "Off",
@@ -395,7 +395,7 @@
     },
     {
       "idSite": 462082,
-      "timestamp": 1723991274,
+      "timestamp": 1729702509,
       "Device": "Gateway",
       "instance": 0,
       "idDataAttribute": 151,
@@ -429,7 +429,7 @@
     },
     {
       "idSite": 462082,
-      "timestamp": 1723991267,
+      "timestamp": 1729701521,
       "Device": "Gateway",
       "instance": 0,
       "idDataAttribute": 558,
@@ -455,7 +455,7 @@
     },
     {
       "idSite": 462082,
-      "timestamp": 1723991257,
+      "timestamp": 1729701511,
       "Device": "Gateway",
       "instance": 0,
       "idDataAttribute": 278,
@@ -465,13 +465,13 @@
       "dbusPath": null,
       "code": "fr",
       "bitmask": 0,
-      "formattedValue": "86100000 B",
-      "rawValue": 86100000,
+      "formattedValue": "17400100000 B",
+      "rawValue": 17400100000,
       "id": 17
     },
     {
       "idSite": 462082,
-      "timestamp": 1723991257,
+      "timestamp": 1729701511,
       "Device": "Gateway",
       "instance": 0,
       "idDataAttribute": 279,
@@ -481,13 +481,13 @@
       "dbusPath": null,
       "code": "fd",
       "bitmask": 0,
-      "formattedValue": "19579500000 B",
-      "rawValue": 19579500000,
+      "formattedValue": "19564100000 B",
+      "rawValue": 19564100000,
       "id": 18
     },
     {
       "idSite": 462082,
-      "timestamp": 1723991274,
+      "timestamp": 1729702509,
       "Device": "Gateway",
       "instance": 0,
       "idDataAttribute": 582,
@@ -513,7 +513,7 @@
     },
     {
       "idSite": 462082,
-      "timestamp": 1723991274,
+      "timestamp": 1729702509,
       "Device": "Gateway",
       "instance": 0,
       "idDataAttribute": 256,
@@ -543,7 +543,7 @@
     },
     {
       "idSite": 462082,
-      "timestamp": 1724023347,
+      "timestamp": 1729710463,
       "Device": "Gateway",
       "instance": 0,
       "idDataAttribute": 216,
@@ -559,7 +559,7 @@
     },
     {
       "idSite": 462082,
-      "timestamp": 1723991274,
+      "timestamp": 1729702509,
       "Device": "Gateway",
       "instance": 0,
       "idDataAttribute": 255,
@@ -575,7 +575,7 @@
     },
     {
       "idSite": 462082,
-      "timestamp": 1723991274,
+      "timestamp": 1729702509,
       "Device": "Gateway",
       "instance": 0,
       "idDataAttribute": 481,
@@ -601,7 +601,7 @@
     },
     {
       "idSite": 462082,
-      "timestamp": 1723991274,
+      "timestamp": 1729702509,
       "Device": "Gateway",
       "instance": 0,
       "idDataAttribute": 257,
@@ -635,7 +635,7 @@
     },
     {
       "idSite": 462082,
-      "timestamp": 1723991274,
+      "timestamp": 1729702509,
       "Device": "Gateway",
       "instance": 0,
       "idDataAttribute": 258,
@@ -661,7 +661,7 @@
     },
     {
       "idSite": 462082,
-      "timestamp": 1723991274,
+      "timestamp": 1729702509,
       "Device": "Gateway",
       "instance": 0,
       "idDataAttribute": 572,
@@ -687,7 +687,7 @@
     },
     {
       "idSite": 462082,
-      "timestamp": 1723991274,
+      "timestamp": 1729702509,
       "Device": "Gateway",
       "instance": 0,
       "idDataAttribute": 573,
@@ -713,7 +713,7 @@
     },
     {
       "idSite": 462082,
-      "timestamp": 1723991274,
+      "timestamp": 1729702509,
       "Device": "Gateway",
       "instance": 0,
       "idDataAttribute": 250,
@@ -723,8 +723,8 @@
       "dbusPath": "/Settings/Services/MqttVrm",
       "code": "tw",
       "bitmask": 0,
-      "formattedValue": "Off",
-      "rawValue": 0,
+      "formattedValue": "On",
+      "rawValue": 1,
       "dataAttributeEnumValues": [
         {
           "nameEnum": "Off",
@@ -739,7 +739,7 @@
     },
     {
       "idSite": 462082,
-      "timestamp": 1723991274,
+      "timestamp": 1729702509,
       "Device": "Gateway",
       "instance": 0,
       "idDataAttribute": 262,
@@ -761,7 +761,7 @@
     },
     {
       "idSite": 462082,
-      "timestamp": 1723991274,
+      "timestamp": 1729702509,
       "Device": "Gateway",
       "instance": 0,
       "idDataAttribute": 266,
@@ -777,7 +777,7 @@
     },
     {
       "idSite": 462082,
-      "timestamp": 1724023347,
+      "timestamp": 1729710463,
       "Device": "Gateway",
       "instance": 0,
       "idDataAttribute": 332,
@@ -847,7 +847,7 @@
     },
     {
       "idSite": 462082,
-      "timestamp": 1723991274,
+      "timestamp": 1729702509,
       "Device": "Gateway",
       "instance": 0,
       "idDataAttribute": 454,
@@ -864,7 +864,7 @@
     },
     {
       "idSite": 462082,
-      "timestamp": 1724023347,
+      "timestamp": 1729710463,
       "Device": "Gateway",
       "instance": 0,
       "idDataAttribute": 333,
@@ -880,7 +880,7 @@
     },
     {
       "idSite": 462082,
-      "timestamp": 1723991274,
+      "timestamp": 1729702509,
       "Device": "Gateway",
       "instance": 0,
       "idDataAttribute": 334,
@@ -896,7 +896,7 @@
     },
     {
       "idSite": 462082,
-      "timestamp": 1724023347,
+      "timestamp": 1729710463,
       "Device": "Gateway",
       "instance": 0,
       "idDataAttribute": 469,
@@ -922,7 +922,7 @@
     },
     {
       "idSite": 462082,
-      "timestamp": 1723991274,
+      "timestamp": 1729702509,
       "Device": "Gateway",
       "instance": 0,
       "idDataAttribute": 269,
@@ -948,7 +948,7 @@
     },
     {
       "idSite": 462082,
-      "timestamp": 1723991274,
+      "timestamp": 1729702509,
       "Device": "Gateway",
       "instance": 0,
       "idDataAttribute": 270,
@@ -974,7 +974,7 @@
     },
     {
       "idSite": 462082,
-      "timestamp": 1723991274,
+      "timestamp": 1729702509,
       "Device": "Gateway",
       "instance": 0,
       "idDataAttribute": 261,
@@ -990,7 +990,7 @@
     },
     {
       "idSite": 462082,
-      "timestamp": 1724023347,
+      "timestamp": 1729710463,
       "Device": "Gateway",
       "instance": 0,
       "idDataAttribute": 263,
@@ -1006,7 +1006,7 @@
     },
     {
       "idSite": 462082,
-      "timestamp": 1723991274,
+      "timestamp": 1729702509,
       "Device": "Gateway",
       "instance": 0,
       "idDataAttribute": 253,
@@ -1032,7 +1032,7 @@
     },
     {
       "idSite": 462082,
-      "timestamp": 1723991274,
+      "timestamp": 1729702509,
       "Device": "Gateway",
       "instance": 0,
       "idDataAttribute": 595,
@@ -1048,7 +1048,7 @@
     },
     {
       "idSite": 462082,
-      "timestamp": 1723991274,
+      "timestamp": 1729702509,
       "Device": "Gateway",
       "instance": 0,
       "idDataAttribute": 560,
@@ -1074,7 +1074,7 @@
     },
     {
       "idSite": 462082,
-      "timestamp": 1723991274,
+      "timestamp": 1729702509,
       "Device": "Gateway",
       "instance": 0,
       "idDataAttribute": 692,
@@ -1084,8 +1084,8 @@
       "dbusPath": "/Settings/Services/NodeRed",
       "code": "nr",
       "bitmask": 0,
-      "formattedValue": "Off",
-      "rawValue": 0,
+      "formattedValue": "On",
+      "rawValue": 1,
       "dataAttributeEnumValues": [
         {
           "nameEnum": "Off",
@@ -1104,7 +1104,7 @@
     },
     {
       "idSite": 462082,
-      "timestamp": 1723991274,
+      "timestamp": 1729702509,
       "Device": "Gateway",
       "instance": 0,
       "idDataAttribute": 693,
@@ -1130,7 +1130,7 @@
     },
     {
       "idSite": 462082,
-      "timestamp": 1723991274,
+      "timestamp": 1729702509,
       "Device": "Gateway",
       "instance": 0,
       "idDataAttribute": 741,
@@ -1156,7 +1156,7 @@
     },
     {
       "idSite": 462082,
-      "timestamp": 1723991274,
+      "timestamp": 1729702509,
       "Device": "Gateway",
       "instance": 0,
       "idDataAttribute": 742,
@@ -1182,7 +1182,7 @@
     },
     {
       "idSite": 462082,
-      "timestamp": 1723991274,
+      "timestamp": 1729702509,
       "Device": "Gateway",
       "instance": 0,
       "idDataAttribute": 743,
@@ -1198,7 +1198,7 @@
     },
     {
       "idSite": 462082,
-      "timestamp": 1723991274,
+      "timestamp": 1729702509,
       "Device": "Gateway",
       "instance": 0,
       "idDataAttribute": 744,
@@ -1214,7 +1214,7 @@
     },
     {
       "idSite": 462082,
-      "timestamp": 1724023347,
+      "timestamp": 1729710463,
       "Device": "Gateway",
       "instance": 0,
       "idDataAttribute": 470,
@@ -1231,7 +1231,7 @@
     },
     {
       "idSite": 462082,
-      "timestamp": 1724023347,
+      "timestamp": 1729710463,
       "Device": "Gateway",
       "instance": 0,
       "idDataAttribute": 479,
@@ -1248,7 +1248,7 @@
     },
     {
       "idSite": 462082,
-      "timestamp": 1723991246,
+      "timestamp": 1729701510,
       "Device": "Gateway",
       "instance": 0,
       "idDataAttribute": 480,
@@ -1286,7 +1286,7 @@
     },
     {
       "idSite": 462082,
-      "timestamp": 1723991267,
+      "timestamp": 1729701521,
       "Device": "Gateway",
       "instance": 0,
       "idDataAttribute": 1283,
@@ -1302,7 +1302,7 @@
     },
     {
       "idSite": 462082,
-      "timestamp": 1723991274,
+      "timestamp": 1729702509,
       "Device": "Gateway",
       "instance": 0,
       "idDataAttribute": 1336,
@@ -1332,7 +1332,7 @@
     },
     {
       "idSite": 462082,
-      "timestamp": 1723991274,
+      "timestamp": 1729702509,
       "Device": "Gateway",
       "instance": 0,
       "idDataAttribute": 1504,
@@ -1358,7 +1358,7 @@
     },
     {
       "idSite": 462082,
-      "timestamp": 1723991274,
+      "timestamp": 1729702509,
       "Device": "Gateway",
       "instance": 0,
       "idDataAttribute": 1270,
@@ -1396,7 +1396,7 @@
     },
     {
       "idSite": 462082,
-      "timestamp": 1724023347,
+      "timestamp": 1729710463,
       "Device": "Gateway",
       "instance": 0,
       "idDataAttribute": 1272,
@@ -1430,7 +1430,7 @@
     },
     {
       "idSite": 462082,
-      "timestamp": 1723991274,
+      "timestamp": 1729702509,
       "Device": "Gateway",
       "instance": 0,
       "idDataAttribute": 1334,
@@ -1440,19 +1440,19 @@
       "dbusPath": "/Settings/DynamicEss/Restrictions",
       "code": "der",
       "bitmask": 0,
-      "formattedValue": "No restrictions",
+      "formattedValue": "No restrictions (0)",
       "rawValue": 0,
       "dataAttributeEnumValues": [
         {
-          "nameEnum": "No restrictions",
+          "nameEnum": "No restrictions (0)",
           "valueEnum": 0
         },
         {
-          "nameEnum": "Restrict exporting energy from battery to grid",
+          "nameEnum": "Restrict exporting energy from battery to grid (1)",
           "valueEnum": 1
         },
         {
-          "nameEnum": "Restrict exporting energy from grid to battery",
+          "nameEnum": "Restrict exporting energy from grid to battery (2)",
           "valueEnum": 2
         }
       ],
@@ -1460,7 +1460,7 @@
     },
     {
       "idSite": 462082,
-      "timestamp": 1724023347,
+      "timestamp": 1729710463,
       "Device": "Gateway",
       "instance": 0,
       "idDataAttribute": 1290,
@@ -1502,7 +1502,7 @@
     },
     {
       "idSite": 462082,
-      "timestamp": 1723991274,
+      "timestamp": 1729702509,
       "Device": "Gateway",
       "instance": 0,
       "idDataAttribute": 1333,
@@ -1518,7 +1518,7 @@
     },
     {
       "idSite": 462082,
-      "timestamp": 1723991274,
+      "timestamp": 1729702509,
       "Device": "Gateway",
       "instance": 0,
       "idDataAttribute": 1289,
@@ -1534,7 +1534,7 @@
     },
     {
       "idSite": 462082,
-      "timestamp": 1723991274,
+      "timestamp": 1729702509,
       "Device": "Gateway",
       "instance": 0,
       "idDataAttribute": 1592,
@@ -1551,7 +1551,7 @@
     },
     {
       "idSite": 462082,
-      "timestamp": 1723991274,
+      "timestamp": 1729702509,
       "Device": "Gateway",
       "instance": 0,
       "idDataAttribute": 1593,
@@ -1568,7 +1568,7 @@
     },
     {
       "idSite": 462082,
-      "timestamp": 1723991274,
+      "timestamp": 1729702509,
       "Device": "Gateway",
       "instance": 0,
       "idDataAttribute": 1042,
@@ -1598,7 +1598,7 @@
     },
     {
       "idSite": 462082,
-      "timestamp": 1723991274,
+      "timestamp": 1729702509,
       "Device": "Gateway",
       "instance": 0,
       "idDataAttribute": 1174,
@@ -1614,7 +1614,59 @@
     },
     {
       "idSite": 462082,
-      "timestamp": 1723991274,
+      "timestamp": 1729710463,
+      "Device": "Gateway",
+      "instance": 0,
+      "idDataAttribute": 306,
+      "description": "Relay 1 state",
+      "formatWithUnit": "%s",
+      "dbusServiceType": "system",
+      "dbusPath": "/Relay/0/State",
+      "code": "cRelay",
+      "bitmask": 0,
+      "formattedValue": "Closed",
+      "rawValue": 1,
+      "dataAttributeEnumValues": [
+        {
+          "nameEnum": "Open",
+          "valueEnum": 0
+        },
+        {
+          "nameEnum": "Closed",
+          "valueEnum": 1
+        }
+      ],
+      "id": 65
+    },
+    {
+      "idSite": 462082,
+      "timestamp": 1729710463,
+      "Device": "Gateway",
+      "instance": 0,
+      "idDataAttribute": 335,
+      "description": "CCGX Relay 2 state",
+      "formatWithUnit": "%s",
+      "dbusServiceType": "system",
+      "dbusPath": "/Relay/1/State",
+      "code": "cRelay1",
+      "bitmask": 0,
+      "formattedValue": "Closed",
+      "rawValue": 1,
+      "dataAttributeEnumValues": [
+        {
+          "nameEnum": "Open",
+          "valueEnum": 0
+        },
+        {
+          "nameEnum": "Closed",
+          "valueEnum": 1
+        }
+      ],
+      "id": 66
+    },
+    {
+      "idSite": 462082,
+      "timestamp": 1729702509,
       "Device": "Gateway",
       "instance": 0,
       "idDataAttribute": 1046,
@@ -1624,8 +1676,8 @@
       "dbusPath": "/Settings/Relay/Function",
       "code": "rf0",
       "bitmask": 0,
-      "formattedValue": "Alarm relay",
-      "rawValue": 0,
+      "formattedValue": "Manual",
+      "rawValue": 2,
       "dataAttributeEnumValues": [
         {
           "nameEnum": "Alarm relay",
@@ -1648,11 +1700,11 @@
           "valueEnum": 4
         }
       ],
-      "id": 65
+      "id": 67
     },
     {
       "idSite": 462082,
-      "timestamp": 1723991274,
+      "timestamp": 1729702509,
       "Device": "Gateway",
       "instance": 0,
       "idDataAttribute": 1047,
@@ -1686,11 +1738,11 @@
           "valueEnum": 4
         }
       ],
-      "id": 66
+      "id": 68
     },
     {
       "idSite": 462082,
-      "timestamp": 1724023347,
+      "timestamp": 1729710463,
       "Device": "Gateway",
       "instance": 0,
       "idDataAttribute": 1018,
@@ -1702,11 +1754,41 @@
       "bitmask": 0,
       "formattedValue": "0",
       "rawValue": 0,
-      "id": 67
+      "id": 69
     },
     {
       "idSite": 462082,
-      "timestamp": 1723991274,
+      "timestamp": 1729701521,
+      "Device": "Gateway",
+      "instance": 0,
+      "idDataAttribute": 694,
+      "description": "Node RED Capabilities",
+      "formatWithUnit": "%s",
+      "dbusServiceType": null,
+      "dbusPath": null,
+      "code": "nrCaps",
+      "bitmask": 1,
+      "formattedValue": "Has Node-RED (1)",
+      "rawValue": 1,
+      "dataAttributeEnumValues": [
+        {
+          "nameEnum": "Has Node-RED",
+          "valueEnum": 1
+        },
+        {
+          "nameEnum": "Has Dashboard",
+          "valueEnum": 2
+        },
+        {
+          "nameEnum": "Has Dashboard v2",
+          "valueEnum": 4
+        }
+      ],
+      "id": 70
+    },
+    {
+      "idSite": 462082,
+      "timestamp": 1729702509,
       "Device": "Battery Monitor",
       "instance": 288,
       "idDataAttribute": 585,
@@ -1718,11 +1800,11 @@
       "bitmask": 0,
       "formattedValue": "",
       "rawValue": "",
-      "id": 68
+      "id": 71
     },
     {
       "idSite": 462082,
-      "timestamp": 1723991274,
+      "timestamp": 1729702509,
       "Device": "Battery Monitor",
       "instance": 288,
       "idDataAttribute": 45,
@@ -1734,11 +1816,11 @@
       "bitmask": 0,
       "formattedValue": "a389",
       "rawValue": "a389",
-      "id": 69
+      "id": 72
     },
     {
       "idSite": 462082,
-      "timestamp": 1723991274,
+      "timestamp": 1729702509,
       "Device": "Battery Monitor",
       "instance": 288,
       "idDataAttribute": 46,
@@ -1750,11 +1832,11 @@
       "bitmask": 0,
       "formattedValue": "v4.16",
       "rawValue": "v4.16",
-      "id": 70
+      "id": 73
     },
     {
       "idSite": 462082,
-      "timestamp": 1723991274,
+      "timestamp": 1729702509,
       "Device": "Battery Monitor",
       "instance": 288,
       "idDataAttribute": 114,
@@ -1766,11 +1848,11 @@
       "bitmask": 0,
       "formattedValue": "HQ2302NKK6K",
       "rawValue": "HQ2302NKK6K",
-      "id": 71
+      "id": 74
     },
     {
       "idSite": 462082,
-      "timestamp": 1724023347,
+      "timestamp": 1729710463,
       "Device": "Battery Monitor",
       "instance": 288,
       "idDataAttribute": 47,
@@ -1780,13 +1862,13 @@
       "dbusPath": "/Dc/0/Voltage",
       "code": "V",
       "bitmask": 0,
-      "formattedValue": "52.66 V",
-      "rawValue": "52.66",
-      "id": 72
+      "formattedValue": "55.07 V",
+      "rawValue": "55.07",
+      "id": 75
     },
     {
       "idSite": 462082,
-      "timestamp": 1724023347,
+      "timestamp": 1729710463,
       "Device": "Battery Monitor",
       "instance": 288,
       "idDataAttribute": 48,
@@ -1796,13 +1878,13 @@
       "dbusPath": "/Dc/1/Voltage",
       "code": "VS",
       "bitmask": 0,
-      "formattedValue": "3.14 V",
-      "rawValue": "3.14",
-      "id": 73
+      "formattedValue": "2.89 V",
+      "rawValue": "2.89",
+      "id": 76
     },
     {
       "idSite": 462082,
-      "timestamp": 1724023347,
+      "timestamp": 1729710463,
       "Device": "Battery Monitor",
       "instance": 288,
       "idDataAttribute": 49,
@@ -1812,13 +1894,13 @@
       "dbusPath": "/Dc/0/Current",
       "code": "I",
       "bitmask": 0,
-      "formattedValue": "-26.50 A",
-      "rawValue": "-26.5",
-      "id": 74
+      "formattedValue": "102.10 A",
+      "rawValue": "102.1",
+      "id": 77
     },
     {
       "idSite": 462082,
-      "timestamp": 1724023347,
+      "timestamp": 1729710463,
       "Device": "Battery Monitor",
       "instance": 288,
       "idDataAttribute": 50,
@@ -1828,13 +1910,13 @@
       "dbusPath": "/ConsumedAmphours",
       "code": "CE",
       "bitmask": 0,
-      "formattedValue": "-10.40 Ah",
-      "rawValue": "-10.4",
-      "id": 75
+      "formattedValue": "-198.20 Ah",
+      "rawValue": "-198.2",
+      "id": 78
     },
     {
       "idSite": 462082,
-      "timestamp": 1724023347,
+      "timestamp": 1729710463,
       "Device": "Battery Monitor",
       "instance": 288,
       "idDataAttribute": 51,
@@ -1844,13 +1926,13 @@
       "dbusPath": "/Soc",
       "code": "SOC",
       "bitmask": 0,
-      "formattedValue": "97.7 %",
-      "rawValue": "97.7",
-      "id": 76
+      "formattedValue": "55.8 %",
+      "rawValue": "55.8",
+      "id": 79
     },
     {
       "idSite": 462082,
-      "timestamp": 1724023347,
+      "timestamp": 1729710463,
       "Device": "Battery Monitor",
       "instance": 288,
       "idDataAttribute": 52,
@@ -1860,13 +1942,13 @@
       "dbusPath": "/TimeToGo",
       "code": "TTG",
       "bitmask": 0,
-      "formattedValue": "15.35 h",
-      "rawValue": "15.35",
-      "id": 77
+      "formattedValue": "0.00 h",
+      "rawValue": 0,
+      "id": 80
     },
     {
       "idSite": 462082,
-      "timestamp": 1724023347,
+      "timestamp": 1729710463,
       "Device": "Battery Monitor",
       "instance": 288,
       "idDataAttribute": 119,
@@ -1892,11 +1974,11 @@
           "valueEnum": 2
         }
       ],
-      "id": 78
+      "id": 81
     },
     {
       "idSite": 462082,
-      "timestamp": 1724023347,
+      "timestamp": 1729710463,
       "Device": "Battery Monitor",
       "instance": 288,
       "idDataAttribute": 120,
@@ -1922,11 +2004,11 @@
           "valueEnum": 2
         }
       ],
-      "id": 79
+      "id": 82
     },
     {
       "idSite": 462082,
-      "timestamp": 1724023347,
+      "timestamp": 1729710463,
       "Device": "Battery Monitor",
       "instance": 288,
       "idDataAttribute": 121,
@@ -1952,11 +2034,11 @@
           "valueEnum": 2
         }
       ],
-      "id": 80
+      "id": 83
     },
     {
       "idSite": 462082,
-      "timestamp": 1724023347,
+      "timestamp": 1729710463,
       "Device": "Battery Monitor",
       "instance": 288,
       "idDataAttribute": 122,
@@ -1982,11 +2064,11 @@
           "valueEnum": 2
         }
       ],
-      "id": 81
+      "id": 84
     },
     {
       "idSite": 462082,
-      "timestamp": 1724023347,
+      "timestamp": 1729710463,
       "Device": "Battery Monitor",
       "instance": 288,
       "idDataAttribute": 123,
@@ -2012,11 +2094,11 @@
           "valueEnum": 2
         }
       ],
-      "id": 82
+      "id": 85
     },
     {
       "idSite": 462082,
-      "timestamp": 1724023347,
+      "timestamp": 1729710463,
       "Device": "Battery Monitor",
       "instance": 288,
       "idDataAttribute": 124,
@@ -2042,11 +2124,11 @@
           "valueEnum": 2
         }
       ],
-      "id": 83
+      "id": 86
     },
     {
       "idSite": 462082,
-      "timestamp": 1724023347,
+      "timestamp": 1729710463,
       "Device": "Battery Monitor",
       "instance": 288,
       "idDataAttribute": 125,
@@ -2072,11 +2154,11 @@
           "valueEnum": 2
         }
       ],
-      "id": 84
+      "id": 87
     },
     {
       "idSite": 462082,
-      "timestamp": 1724023347,
+      "timestamp": 1729710463,
       "Device": "Battery Monitor",
       "instance": 288,
       "idDataAttribute": 126,
@@ -2102,11 +2184,11 @@
           "valueEnum": 2
         }
       ],
-      "id": 85
+      "id": 88
     },
     {
       "idSite": 462082,
-      "timestamp": 1723991273,
+      "timestamp": 1729702504,
       "Device": "Battery Monitor",
       "instance": 288,
       "idDataAttribute": 55,
@@ -2116,13 +2198,13 @@
       "dbusPath": "/History/DeepestDischarge",
       "code": "H1",
       "bitmask": 0,
-      "formattedValue": "-409.00 Ah",
-      "rawValue": "-409",
-      "id": 86
+      "formattedValue": "-440.00 Ah",
+      "rawValue": "-440",
+      "id": 89
     },
     {
       "idSite": 462082,
-      "timestamp": 1724023347,
+      "timestamp": 1729702504,
       "Device": "Battery Monitor",
       "instance": 288,
       "idDataAttribute": 56,
@@ -2132,13 +2214,13 @@
       "dbusPath": "/History/LastDischarge",
       "code": "H2",
       "bitmask": 0,
-      "formattedValue": "-10.40 Ah",
-      "rawValue": "-10.4",
-      "id": 87
+      "formattedValue": "-440.00 Ah",
+      "rawValue": "-440",
+      "id": 90
     },
     {
       "idSite": 462082,
-      "timestamp": 1724010747,
+      "timestamp": 1729702504,
       "Device": "Battery Monitor",
       "instance": 288,
       "idDataAttribute": 57,
@@ -2148,13 +2230,13 @@
       "dbusPath": "/History/AverageDischarge",
       "code": "H3",
       "bitmask": 0,
-      "formattedValue": "-264.00 Ah",
-      "rawValue": "-264",
-      "id": 88
+      "formattedValue": "-276.30 Ah",
+      "rawValue": "-276.3",
+      "id": 91
     },
     {
       "idSite": 462082,
-      "timestamp": 1724010747,
+      "timestamp": 1729702504,
       "Device": "Battery Monitor",
       "instance": 288,
       "idDataAttribute": 58,
@@ -2164,13 +2246,13 @@
       "dbusPath": "/History/ChargeCycles",
       "code": "H4",
       "bitmask": 0,
-      "formattedValue": "20.00",
-      "rawValue": 20,
-      "id": 89
+      "formattedValue": "37.00",
+      "rawValue": 37,
+      "id": 92
     },
     {
       "idSite": 462082,
-      "timestamp": 1723991273,
+      "timestamp": 1729702504,
       "Device": "Battery Monitor",
       "instance": 288,
       "idDataAttribute": 59,
@@ -2180,13 +2262,13 @@
       "dbusPath": "/History/FullDischarges",
       "code": "H5",
       "bitmask": 0,
-      "formattedValue": "0.00",
-      "rawValue": 0,
-      "id": 90
+      "formattedValue": "1.00",
+      "rawValue": 1,
+      "id": 93
     },
     {
       "idSite": 462082,
-      "timestamp": 1724023347,
+      "timestamp": 1729709322,
       "Device": "Battery Monitor",
       "instance": 288,
       "idDataAttribute": 60,
@@ -2196,13 +2278,13 @@
       "dbusPath": "/History/TotalAhDrawn",
       "code": "H6",
       "bitmask": 0,
-      "formattedValue": "-13334.40 Ah",
-      "rawValue": "-13334.4",
-      "id": 91
+      "formattedValue": "-29947.30 Ah",
+      "rawValue": "-29947.3",
+      "id": 94
     },
     {
       "idSite": 462082,
-      "timestamp": 1723991273,
+      "timestamp": 1729702504,
       "Device": "Battery Monitor",
       "instance": 288,
       "idDataAttribute": 61,
@@ -2214,11 +2296,11 @@
       "bitmask": 0,
       "formattedValue": "-0.48 V",
       "rawValue": "-0.48",
-      "id": 92
+      "id": 95
     },
     {
       "idSite": 462082,
-      "timestamp": 1723991273,
+      "timestamp": 1729702504,
       "Device": "Battery Monitor",
       "instance": 288,
       "idDataAttribute": 62,
@@ -2230,11 +2312,11 @@
       "bitmask": 0,
       "formattedValue": "58.42 V",
       "rawValue": "58.42",
-      "id": 93
+      "id": 96
     },
     {
       "idSite": 462082,
-      "timestamp": 1724023347,
+      "timestamp": 1729710463,
       "Device": "Battery Monitor",
       "instance": 288,
       "idDataAttribute": 63,
@@ -2244,13 +2326,13 @@
       "dbusPath": "/History/TimeSinceLastFullCharge",
       "code": "H9",
       "bitmask": 0,
-      "formattedValue": "0.05",
-      "rawValue": "0.0527662",
-      "id": 94
+      "formattedValue": "17.81",
+      "rawValue": "17.8121",
+      "id": 97
     },
     {
       "idSite": 462082,
-      "timestamp": 1724014167,
+      "timestamp": 1729702504,
       "Device": "Battery Monitor",
       "instance": 288,
       "idDataAttribute": 64,
@@ -2260,13 +2342,13 @@
       "dbusPath": "/History/AutomaticSyncs",
       "code": "H10",
       "bitmask": 0,
-      "formattedValue": "24.00",
-      "rawValue": 24,
-      "id": 95
+      "formattedValue": "34.00",
+      "rawValue": 34,
+      "id": 98
     },
     {
       "idSite": 462082,
-      "timestamp": 1723991273,
+      "timestamp": 1729702504,
       "Device": "Battery Monitor",
       "instance": 288,
       "idDataAttribute": 65,
@@ -2278,11 +2360,11 @@
       "bitmask": 0,
       "formattedValue": "0.00",
       "rawValue": 0,
-      "id": 96
+      "id": 99
     },
     {
       "idSite": 462082,
-      "timestamp": 1723991273,
+      "timestamp": 1729702504,
       "Device": "Battery Monitor",
       "instance": 288,
       "idDataAttribute": 66,
@@ -2294,11 +2376,11 @@
       "bitmask": 0,
       "formattedValue": "0.00",
       "rawValue": 0,
-      "id": 97
+      "id": 100
     },
     {
       "idSite": 462082,
-      "timestamp": 1723991273,
+      "timestamp": 1729702504,
       "Device": "Battery Monitor",
       "instance": 288,
       "idDataAttribute": 69,
@@ -2310,11 +2392,11 @@
       "bitmask": 0,
       "formattedValue": "-0.09 V",
       "rawValue": "-0.09",
-      "id": 98
+      "id": 101
     },
     {
       "idSite": 462082,
-      "timestamp": 1723991273,
+      "timestamp": 1729702504,
       "Device": "Battery Monitor",
       "instance": 288,
       "idDataAttribute": 70,
@@ -2326,11 +2408,11 @@
       "bitmask": 0,
       "formattedValue": "14.83 V",
       "rawValue": "14.83",
-      "id": 99
+      "id": 102
     },
     {
       "idSite": 462082,
-      "timestamp": 1724023347,
+      "timestamp": 1729708842,
       "Device": "Battery Monitor",
       "instance": 288,
       "idDataAttribute": 244,
@@ -2340,13 +2422,13 @@
       "dbusPath": "/History/DischargedEnergy",
       "code": "H21",
       "bitmask": 0,
-      "formattedValue": "691.58 kWh",
-      "rawValue": "691.58",
-      "id": 100
+      "formattedValue": "1552.52 kWh",
+      "rawValue": "1552.52",
+      "id": 103
     },
     {
       "idSite": 462082,
-      "timestamp": 1724017287,
+      "timestamp": 1729710463,
       "Device": "Battery Monitor",
       "instance": 288,
       "idDataAttribute": 245,
@@ -2356,13 +2438,13 @@
       "dbusPath": "/History/ChargedEnergy",
       "code": "H22",
       "bitmask": 0,
-      "formattedValue": "803.81 kWh",
-      "rawValue": "803.81",
-      "id": 101
+      "formattedValue": "1703.03 kWh",
+      "rawValue": "1703.03",
+      "id": 104
     },
     {
       "idSite": 462082,
-      "timestamp": 1724023347,
+      "timestamp": 1729709102,
       "Device": "Battery Monitor",
       "instance": 288,
       "idDataAttribute": 338,
@@ -2372,13 +2454,13 @@
       "dbusPath": null,
       "code": "dH21",
       "bitmask": 0,
-      "formattedValue": "0.14 kWh",
-      "rawValue": "0.140015",
-      "id": 102
+      "formattedValue": "0.07 kWh",
+      "rawValue": "0.0700684",
+      "id": 105
     },
     {
       "idSite": 462082,
-      "timestamp": 1724017510,
+      "timestamp": 1729710463,
       "Device": "Battery Monitor",
       "instance": 288,
       "idDataAttribute": 339,
@@ -2388,13 +2470,13 @@
       "dbusPath": null,
       "code": "dH22",
       "bitmask": 0,
-      "formattedValue": "0.01 kWh",
-      "rawValue": "0.0100098",
-      "id": 103
+      "formattedValue": "0.37 kWh",
+      "rawValue": "0.369995",
+      "id": 106
     },
     {
       "idSite": 462082,
-      "timestamp": 1724023347,
+      "timestamp": 1729710463,
       "Device": "Solar Charger",
       "instance": 289,
       "idDataAttribute": 583,
@@ -2440,11 +2522,11 @@
           "valueEnum": 128
         }
       ],
-      "id": 104
+      "id": 107
     },
     {
       "idSite": 462082,
-      "timestamp": 1723991274,
+      "timestamp": 1729702509,
       "Device": "Solar Charger",
       "instance": 289,
       "idDataAttribute": 586,
@@ -2456,11 +2538,11 @@
       "bitmask": 0,
       "formattedValue": "",
       "rawValue": "",
-      "id": 105
+      "id": 108
     },
     {
       "idSite": 462082,
-      "timestamp": 1723991274,
+      "timestamp": 1729702509,
       "Device": "Solar Charger",
       "instance": 289,
       "idDataAttribute": 106,
@@ -2472,11 +2554,11 @@
       "bitmask": 0,
       "formattedValue": "a058",
       "rawValue": "a058",
-      "id": 106
+      "id": 109
     },
     {
       "idSite": 462082,
-      "timestamp": 1723991274,
+      "timestamp": 1729702509,
       "Device": "Solar Charger",
       "instance": 289,
       "idDataAttribute": 80,
@@ -2488,11 +2570,11 @@
       "bitmask": 0,
       "formattedValue": "v1.64",
       "rawValue": "v1.64",
-      "id": 107
+      "id": 110
     },
     {
       "idSite": 462082,
-      "timestamp": 1723991274,
+      "timestamp": 1729702509,
       "Device": "Solar Charger",
       "instance": 289,
       "idDataAttribute": 118,
@@ -2504,11 +2586,11 @@
       "bitmask": 0,
       "formattedValue": "HQ2131HZ2ZV",
       "rawValue": "HQ2131HZ2ZV",
-      "id": 108
+      "id": 111
     },
     {
       "idSite": 462082,
-      "timestamp": 1724023347,
+      "timestamp": 1729710463,
       "Device": "Solar Charger",
       "instance": 289,
       "idDataAttribute": 81,
@@ -2518,13 +2600,13 @@
       "dbusPath": "/Dc/0/Voltage",
       "code": "ScV",
       "bitmask": 0,
-      "formattedValue": "52.7 V",
-      "rawValue": "52.68",
-      "id": 109
+      "formattedValue": "55.1 V",
+      "rawValue": "55.06",
+      "id": 112
     },
     {
       "idSite": 462082,
-      "timestamp": 1723991274,
+      "timestamp": 1729702509,
       "Device": "Solar Charger",
       "instance": 289,
       "idDataAttribute": 1105,
@@ -2537,11 +2619,11 @@
       "formattedValue": 48,
       "rawValue": 48,
       "dataAttributeEnumValues": [],
-      "id": 110
+      "id": 113
     },
     {
       "idSite": 462082,
-      "timestamp": 1724023347,
+      "timestamp": 1729710463,
       "Device": "Solar Charger",
       "instance": 289,
       "idDataAttribute": 82,
@@ -2551,13 +2633,13 @@
       "dbusPath": "/Dc/0/Current",
       "code": "ScI",
       "bitmask": 0,
-      "formattedValue": "2.1 A",
-      "rawValue": "2.1",
-      "id": 111
+      "formattedValue": "31.5 A",
+      "rawValue": "31.5",
+      "id": 114
     },
     {
       "idSite": 462082,
-      "timestamp": 1724023347,
+      "timestamp": 1729710463,
       "Device": "Solar Charger",
       "instance": 289,
       "idDataAttribute": 107,
@@ -2567,13 +2649,13 @@
       "dbusPath": null,
       "code": "ScW",
       "bitmask": 0,
-      "formattedValue": "111 W",
-      "rawValue": "110.628",
-      "id": 112
+      "formattedValue": "1734 W",
+      "rawValue": "1734.39",
+      "id": 115
     },
     {
       "idSite": 462082,
-      "timestamp": 1724023347,
+      "timestamp": 1729710463,
       "Device": "Solar Charger",
       "instance": 289,
       "idDataAttribute": 241,
@@ -2595,11 +2677,11 @@
           "valueEnum": 1
         }
       ],
-      "id": 113
+      "id": 116
     },
     {
       "idSite": 462082,
-      "timestamp": 1724023347,
+      "timestamp": 1729710463,
       "Device": "Solar Charger",
       "instance": 289,
       "idDataAttribute": 84,
@@ -2625,11 +2707,11 @@
           "valueEnum": 4
         }
       ],
-      "id": 114
+      "id": 117
     },
     {
       "idSite": 462082,
-      "timestamp": 1724023347,
+      "timestamp": 1729710463,
       "Device": "Solar Charger",
       "instance": 289,
       "idDataAttribute": 85,
@@ -2683,11 +2765,11 @@
           "valueEnum": 252
         }
       ],
-      "id": 115
+      "id": 118
     },
     {
       "idSite": 462082,
-      "timestamp": 1724023347,
+      "timestamp": 1729710463,
       "Device": "Solar Charger",
       "instance": 289,
       "idDataAttribute": 86,
@@ -2697,13 +2779,13 @@
       "dbusPath": "/Pv/V",
       "code": "PVV",
       "bitmask": 0,
-      "formattedValue": "75.7 V",
-      "rawValue": "75.7",
-      "id": 116
+      "formattedValue": "76.6 V",
+      "rawValue": "76.56",
+      "id": 119
     },
     {
       "idSite": 462082,
-      "timestamp": 1724023347,
+      "timestamp": 1729710463,
       "Device": "Solar Charger",
       "instance": 289,
       "idDataAttribute": 442,
@@ -2713,13 +2795,13 @@
       "dbusPath": "/Yield/Power",
       "code": "PVP",
       "bitmask": 0,
-      "formattedValue": "115 W",
-      "rawValue": 115,
-      "id": 117
+      "formattedValue": "1774 W",
+      "rawValue": 1774,
+      "id": 120
     },
     {
       "idSite": 462082,
-      "timestamp": 1724023347,
+      "timestamp": 1729710463,
       "Device": "Solar Charger",
       "instance": 289,
       "idDataAttribute": 518,
@@ -2749,11 +2831,11 @@
           "valueEnum": 255
         }
       ],
-      "id": 118
+      "id": 121
     },
     {
       "idSite": 462082,
-      "timestamp": 1724023347,
+      "timestamp": 1729710463,
       "Device": "Solar Charger",
       "instance": 289,
       "idDataAttribute": 94,
@@ -2763,13 +2845,13 @@
       "dbusPath": "/History/Daily/0/Yield",
       "code": "YT",
       "bitmask": 0,
-      "formattedValue": "7.62 kWh",
-      "rawValue": "7.62",
-      "id": 119
+      "formattedValue": "3.50 kWh",
+      "rawValue": "3.5",
+      "id": 122
     },
     {
       "idSite": 462082,
-      "timestamp": 1724023347,
+      "timestamp": 1729710463,
       "Device": "Solar Charger",
       "instance": 289,
       "idDataAttribute": 95,
@@ -2779,13 +2861,13 @@
       "dbusPath": "/History/Daily/0/MaxPower",
       "code": "MCPT",
       "bitmask": 0,
-      "formattedValue": "1855 W",
-      "rawValue": 1855,
-      "id": 120
+      "formattedValue": "1868 W",
+      "rawValue": 1868,
+      "id": 123
     },
     {
       "idSite": 462082,
-      "timestamp": 1724023347,
+      "timestamp": 1729710463,
       "Device": "Solar Charger",
       "instance": 289,
       "idDataAttribute": 96,
@@ -2795,13 +2877,13 @@
       "dbusPath": "/History/Daily/1/Yield",
       "code": "YY",
       "bitmask": 0,
-      "formattedValue": "8.54 kWh",
-      "rawValue": "8.54",
-      "id": 121
+      "formattedValue": "5.80 kWh",
+      "rawValue": "5.8",
+      "id": 124
     },
     {
       "idSite": 462082,
-      "timestamp": 1724023347,
+      "timestamp": 1729710463,
       "Device": "Solar Charger",
       "instance": 289,
       "idDataAttribute": 97,
@@ -2811,13 +2893,13 @@
       "dbusPath": "/History/Daily/1/MaxPower",
       "code": "MCPY",
       "bitmask": 0,
-      "formattedValue": "1905 W",
-      "rawValue": 1905,
-      "id": 122
+      "formattedValue": "1738 W",
+      "rawValue": 1738,
+      "id": 125
     },
     {
       "idSite": 462082,
-      "timestamp": 1724023347,
+      "timestamp": 1729710463,
       "Device": "Solar Charger",
       "instance": 289,
       "idDataAttribute": 98,
@@ -3151,11 +3233,11 @@
           "valueEnum": 215
         }
       ],
-      "id": 123
+      "id": 126
     },
     {
       "idSite": 462082,
-      "timestamp": 1724023347,
+      "timestamp": 1729710463,
       "Device": "Solar Charger",
       "instance": 289,
       "idDataAttribute": 285,
@@ -3165,13 +3247,13 @@
       "dbusPath": "/Yield/User",
       "code": "YU",
       "bitmask": 0,
-      "formattedValue": "2570.63 kWh",
-      "rawValue": "2570.63",
-      "id": 124
+      "formattedValue": "2936.62 kWh",
+      "rawValue": "2936.62",
+      "id": 127
     },
     {
       "idSite": 462082,
-      "timestamp": 1724023347,
+      "timestamp": 1729710463,
       "Device": "Solar Charger",
       "instance": 289,
       "idDataAttribute": 340,
@@ -3181,13 +3263,806 @@
       "dbusPath": null,
       "code": "dYU",
       "bitmask": 0,
-      "formattedValue": "0.01 kWh",
-      "rawValue": "0.00976562",
-      "id": 125
+      "formattedValue": "0.13 kWh",
+      "rawValue": "0.130127",
+      "id": 128
     },
     {
       "idSite": 462082,
-      "timestamp": 1724023347,
+      "timestamp": 1729710463,
+      "Device": "Solar Charger",
+      "instance": 290,
+      "idDataAttribute": 583,
+      "description": "Solar charger off reason",
+      "formatWithUnit": "%s",
+      "dbusServiceType": "solarcharger",
+      "dbusPath": "/DeviceOffReason",
+      "code": "ScOR",
+      "bitmask": 1,
+      "formattedValue": " (0)",
+      "rawValue": 0,
+      "dataAttributeEnumValues": [
+        {
+          "nameEnum": "No input power",
+          "valueEnum": 1
+        },
+        {
+          "nameEnum": "Physical switch",
+          "valueEnum": 2
+        },
+        {
+          "nameEnum": "Remote via device mode or button",
+          "valueEnum": 4
+        },
+        {
+          "nameEnum": "Remote input connector",
+          "valueEnum": 8
+        },
+        {
+          "nameEnum": "Internal condition",
+          "valueEnum": 16
+        },
+        {
+          "nameEnum": "PayGo token required",
+          "valueEnum": 32
+        },
+        {
+          "nameEnum": "BMS disallows charge",
+          "valueEnum": 64
+        },
+        {
+          "nameEnum": "Low input voltage",
+          "valueEnum": 128
+        }
+      ],
+      "id": 129
+    },
+    {
+      "idSite": 462082,
+      "timestamp": 1729702509,
+      "Device": "Solar Charger",
+      "instance": 290,
+      "idDataAttribute": 586,
+      "description": "Solar charger custom name",
+      "formatWithUnit": "%s",
+      "dbusServiceType": "solarcharger",
+      "dbusPath": "/CustomName",
+      "code": "Sccn",
+      "bitmask": 0,
+      "formattedValue": "",
+      "rawValue": "",
+      "id": 130
+    },
+    {
+      "idSite": 462082,
+      "timestamp": 1729702509,
+      "Device": "Solar Charger",
+      "instance": 290,
+      "idDataAttribute": 106,
+      "description": "Solarcharger model",
+      "formatWithUnit": "%s",
+      "dbusServiceType": "solarcharger",
+      "dbusPath": "/ProductId",
+      "code": "ScM",
+      "bitmask": 0,
+      "formattedValue": "a073",
+      "rawValue": "a073",
+      "id": 131
+    },
+    {
+      "idSite": 462082,
+      "timestamp": 1729702509,
+      "Device": "Solar Charger",
+      "instance": 290,
+      "idDataAttribute": 80,
+      "description": "Solar charger version",
+      "formatWithUnit": "%s",
+      "dbusServiceType": "solarcharger",
+      "dbusPath": "/FirmwareVersion",
+      "code": "ScVt",
+      "bitmask": 0,
+      "formattedValue": "v1.64",
+      "rawValue": "v1.64",
+      "id": 132
+    },
+    {
+      "idSite": 462082,
+      "timestamp": 1729702509,
+      "Device": "Solar Charger",
+      "instance": 290,
+      "idDataAttribute": 118,
+      "description": "Solar charger serial number",
+      "formatWithUnit": "%s",
+      "dbusServiceType": "solarcharger",
+      "dbusPath": "/Serial",
+      "code": "ScSN",
+      "bitmask": 0,
+      "formattedValue": "HQ2342AE2NT",
+      "rawValue": "HQ2342AE2NT",
+      "id": 133
+    },
+    {
+      "idSite": 462082,
+      "timestamp": 1729710463,
+      "Device": "Solar Charger",
+      "instance": 290,
+      "idDataAttribute": 81,
+      "description": "Voltage",
+      "formatWithUnit": "%.1F V",
+      "dbusServiceType": "solarcharger",
+      "dbusPath": "/Dc/0/Voltage",
+      "code": "ScV",
+      "bitmask": 0,
+      "formattedValue": "55.0 V",
+      "rawValue": "55.04",
+      "id": 134
+    },
+    {
+      "idSite": 462082,
+      "timestamp": 1729702509,
+      "Device": "Solar Charger",
+      "instance": 290,
+      "idDataAttribute": 1105,
+      "description": "Voltage setting",
+      "formatWithUnit": "",
+      "dbusServiceType": "solarcharger",
+      "dbusPath": "/Settings/BatteryVoltageSetting",
+      "code": "Scvs",
+      "bitmask": 0,
+      "formattedValue": 48,
+      "rawValue": 48,
+      "dataAttributeEnumValues": [],
+      "id": 135
+    },
+    {
+      "idSite": 462082,
+      "timestamp": 1729710463,
+      "Device": "Solar Charger",
+      "instance": 290,
+      "idDataAttribute": 82,
+      "description": "Current",
+      "formatWithUnit": "%.1F A",
+      "dbusServiceType": "solarcharger",
+      "dbusPath": "/Dc/0/Current",
+      "code": "ScI",
+      "bitmask": 0,
+      "formattedValue": "6.5 A",
+      "rawValue": "6.5",
+      "id": 136
+    },
+    {
+      "idSite": 462082,
+      "timestamp": 1729710463,
+      "Device": "Solar Charger",
+      "instance": 290,
+      "idDataAttribute": 107,
+      "description": "Battery watts",
+      "formatWithUnit": "%.0F W",
+      "dbusServiceType": null,
+      "dbusPath": null,
+      "code": "ScW",
+      "bitmask": 0,
+      "formattedValue": "358 W",
+      "rawValue": "357.76",
+      "id": 137
+    },
+    {
+      "idSite": 462082,
+      "timestamp": 1729710463,
+      "Device": "Solar Charger",
+      "instance": 290,
+      "idDataAttribute": 241,
+      "description": "Load state",
+      "formatWithUnit": "%s",
+      "dbusServiceType": "solarcharger",
+      "dbusPath": "/Load/State",
+      "code": "SLs",
+      "bitmask": 0,
+      "formattedValue": "On",
+      "rawValue": 1,
+      "dataAttributeEnumValues": [
+        {
+          "nameEnum": "Off",
+          "valueEnum": 0
+        },
+        {
+          "nameEnum": "On",
+          "valueEnum": 1
+        }
+      ],
+      "id": 138
+    },
+    {
+      "idSite": 462082,
+      "timestamp": 1729710463,
+      "Device": "Solar Charger",
+      "instance": 290,
+      "idDataAttribute": 84,
+      "description": "Charger on/off",
+      "formatWithUnit": "%s",
+      "dbusServiceType": "solarcharger",
+      "dbusPath": "/Mode",
+      "code": "Scs",
+      "bitmask": 0,
+      "formattedValue": "On",
+      "rawValue": 1,
+      "dataAttributeEnumValues": [
+        {
+          "nameEnum": "Off (deprecated)",
+          "valueEnum": 0
+        },
+        {
+          "nameEnum": "On",
+          "valueEnum": 1
+        },
+        {
+          "nameEnum": "Off",
+          "valueEnum": 4
+        }
+      ],
+      "id": 139
+    },
+    {
+      "idSite": 462082,
+      "timestamp": 1729710463,
+      "Device": "Solar Charger",
+      "instance": 290,
+      "idDataAttribute": 85,
+      "description": "Charge state",
+      "formatWithUnit": "%s",
+      "dbusServiceType": "solarcharger",
+      "dbusPath": "/State",
+      "code": "ScS",
+      "bitmask": 0,
+      "formattedValue": "Bulk",
+      "rawValue": 3,
+      "dataAttributeEnumValues": [
+        {
+          "nameEnum": "Off",
+          "valueEnum": 0
+        },
+        {
+          "nameEnum": "Fault",
+          "valueEnum": 2
+        },
+        {
+          "nameEnum": "Bulk",
+          "valueEnum": 3
+        },
+        {
+          "nameEnum": "Absorption",
+          "valueEnum": 4
+        },
+        {
+          "nameEnum": "Float",
+          "valueEnum": 5
+        },
+        {
+          "nameEnum": "Storage",
+          "valueEnum": 6
+        },
+        {
+          "nameEnum": "Equalize",
+          "valueEnum": 7
+        },
+        {
+          "nameEnum": "Off",
+          "valueEnum": 245
+        },
+        {
+          "nameEnum": "Equalize",
+          "valueEnum": 247
+        },
+        {
+          "nameEnum": "Ext. Control",
+          "valueEnum": 252
+        }
+      ],
+      "id": 140
+    },
+    {
+      "idSite": 462082,
+      "timestamp": 1729710463,
+      "Device": "Solar Charger",
+      "instance": 290,
+      "idDataAttribute": 86,
+      "description": "PV voltage",
+      "formatWithUnit": "%.1F V",
+      "dbusServiceType": "solarcharger",
+      "dbusPath": "/Pv/V",
+      "code": "PVV",
+      "bitmask": 0,
+      "formattedValue": "73.8 V",
+      "rawValue": "73.79",
+      "id": 141
+    },
+    {
+      "idSite": 462082,
+      "timestamp": 1729710463,
+      "Device": "Solar Charger",
+      "instance": 290,
+      "idDataAttribute": 442,
+      "description": "PV power",
+      "formatWithUnit": "%d W",
+      "dbusServiceType": "solarcharger",
+      "dbusPath": "/Yield/Power",
+      "code": "PVP",
+      "bitmask": 0,
+      "formattedValue": "365 W",
+      "rawValue": 365,
+      "id": 142
+    },
+    {
+      "idSite": 462082,
+      "timestamp": 1729710463,
+      "Device": "Solar Charger",
+      "instance": 290,
+      "idDataAttribute": 518,
+      "description": "MPPT State",
+      "formatWithUnit": "%s",
+      "dbusServiceType": "solarcharger",
+      "dbusPath": "/MppOperationMode",
+      "code": "ScMm",
+      "bitmask": 0,
+      "formattedValue": "MPPT active",
+      "rawValue": 2,
+      "dataAttributeEnumValues": [
+        {
+          "nameEnum": "Off",
+          "valueEnum": 0
+        },
+        {
+          "nameEnum": "Voltage or current limited",
+          "valueEnum": 1
+        },
+        {
+          "nameEnum": "MPPT active",
+          "valueEnum": 2
+        },
+        {
+          "nameEnum": "Not available",
+          "valueEnum": 255
+        }
+      ],
+      "id": 143
+    },
+    {
+      "idSite": 462082,
+      "timestamp": 1729710463,
+      "Device": "Solar Charger",
+      "instance": 290,
+      "idDataAttribute": 94,
+      "description": "Yield today",
+      "formatWithUnit": "%.2F kWh",
+      "dbusServiceType": "solarcharger",
+      "dbusPath": "/History/Daily/0/Yield",
+      "code": "YT",
+      "bitmask": 0,
+      "formattedValue": "0.78 kWh",
+      "rawValue": "0.78",
+      "id": 144
+    },
+    {
+      "idSite": 462082,
+      "timestamp": 1729710463,
+      "Device": "Solar Charger",
+      "instance": 290,
+      "idDataAttribute": 95,
+      "description": "Maximum charge power today",
+      "formatWithUnit": "%d W",
+      "dbusServiceType": "solarcharger",
+      "dbusPath": "/History/Daily/0/MaxPower",
+      "code": "MCPT",
+      "bitmask": 0,
+      "formattedValue": "867 W",
+      "rawValue": 867,
+      "id": 145
+    },
+    {
+      "idSite": 462082,
+      "timestamp": 1729710463,
+      "Device": "Solar Charger",
+      "instance": 290,
+      "idDataAttribute": 96,
+      "description": "Yield yesterday",
+      "formatWithUnit": "%.2F kWh",
+      "dbusServiceType": "solarcharger",
+      "dbusPath": "/History/Daily/1/Yield",
+      "code": "YY",
+      "bitmask": 0,
+      "formattedValue": "0.00 kWh",
+      "rawValue": 0,
+      "id": 146
+    },
+    {
+      "idSite": 462082,
+      "timestamp": 1729710463,
+      "Device": "Solar Charger",
+      "instance": 290,
+      "idDataAttribute": 97,
+      "description": "Maximum charge power yesterday",
+      "formatWithUnit": "%d W",
+      "dbusServiceType": "solarcharger",
+      "dbusPath": "/History/Daily/1/MaxPower",
+      "code": "MCPY",
+      "bitmask": 0,
+      "formattedValue": "0 W",
+      "rawValue": 0,
+      "id": 147
+    },
+    {
+      "idSite": 462082,
+      "timestamp": 1729710463,
+      "Device": "Solar Charger",
+      "instance": 290,
+      "idDataAttribute": 98,
+      "description": "Error code",
+      "formatWithUnit": "%s",
+      "dbusServiceType": "solarcharger",
+      "dbusPath": "/ErrorCode",
+      "code": "ScERR",
+      "bitmask": 0,
+      "formattedValue": "No error",
+      "rawValue": 0,
+      "dataAttributeEnumValues": [
+        {
+          "nameEnum": "No error",
+          "valueEnum": 0
+        },
+        {
+          "nameEnum": "#1 - Battery temperature too high",
+          "valueEnum": 1
+        },
+        {
+          "nameEnum": "#2 - Battery voltage too high",
+          "valueEnum": 2
+        },
+        {
+          "nameEnum": "#3 - Battery temperature sensor miswired (+)",
+          "valueEnum": 3
+        },
+        {
+          "nameEnum": "#4 - Battery temperature sensor miswired (-)",
+          "valueEnum": 4
+        },
+        {
+          "nameEnum": "#5 - Battery temperature sensor disconnected",
+          "valueEnum": 5
+        },
+        {
+          "nameEnum": "#6 - Battery voltage sense miswired (+)",
+          "valueEnum": 6
+        },
+        {
+          "nameEnum": "#7 - Battery voltage sense miswired (-)",
+          "valueEnum": 7
+        },
+        {
+          "nameEnum": "#8 - Battery voltage sense disconnected",
+          "valueEnum": 8
+        },
+        {
+          "nameEnum": "#9 - Battery voltage wire losses too high",
+          "valueEnum": 9
+        },
+        {
+          "nameEnum": "#10 - Battery voltage too low",
+          "valueEnum": 10
+        },
+        {
+          "nameEnum": "#11 - Battery ripple voltage on terminals too high",
+          "valueEnum": 11
+        },
+        {
+          "nameEnum": "#12 - Battery low state of charge",
+          "valueEnum": 12
+        },
+        {
+          "nameEnum": "#13 - Battery mid-point voltage issue",
+          "valueEnum": 13
+        },
+        {
+          "nameEnum": "#14 - Battery temperature too low",
+          "valueEnum": 14
+        },
+        {
+          "nameEnum": "#17 - Charger temperature too high",
+          "valueEnum": 17
+        },
+        {
+          "nameEnum": "#18 - Charger over-current",
+          "valueEnum": 18
+        },
+        {
+          "nameEnum": "#19 - Charger current polarity reversed",
+          "valueEnum": 19
+        },
+        {
+          "nameEnum": "#20 - Max Bulk-time exceeded",
+          "valueEnum": 20
+        },
+        {
+          "nameEnum": "#21 - Charger current sensor issue",
+          "valueEnum": 21
+        },
+        {
+          "nameEnum": "#22 - Temperature sensor miswired",
+          "valueEnum": 22
+        },
+        {
+          "nameEnum": "#23 - Charger temperature sensor disconnected",
+          "valueEnum": 23
+        },
+        {
+          "nameEnum": "#24 - Charger internal fan not detected",
+          "valueEnum": 24
+        },
+        {
+          "nameEnum": "#25 - Charger internal fan over-current",
+          "valueEnum": 25
+        },
+        {
+          "nameEnum": "#26 - Charger terminal overheated",
+          "valueEnum": 26
+        },
+        {
+          "nameEnum": "#27 - Charger short circuit",
+          "valueEnum": 27
+        },
+        {
+          "nameEnum": "#28 - Charger issue with power stage",
+          "valueEnum": 28
+        },
+        {
+          "nameEnum": "#29 - Over-charge protection",
+          "valueEnum": 29
+        },
+        {
+          "nameEnum": "#31 - Input voltage out of range",
+          "valueEnum": 31
+        },
+        {
+          "nameEnum": "#32 - Input voltage too low",
+          "valueEnum": 32
+        },
+        {
+          "nameEnum": "#33 - Input voltage too high",
+          "valueEnum": 33
+        },
+        {
+          "nameEnum": "#34 - PV over current",
+          "valueEnum": 34
+        },
+        {
+          "nameEnum": "#35 - Input excessive power",
+          "valueEnum": 35
+        },
+        {
+          "nameEnum": "#36 - Input polarity issue",
+          "valueEnum": 36
+        },
+        {
+          "nameEnum": "#37 - Input voltage absent (mains removed, fuse blown?)",
+          "valueEnum": 37
+        },
+        {
+          "nameEnum": "#38 - PV Input shutdown",
+          "valueEnum": 38
+        },
+        {
+          "nameEnum": "#39 - PV Input shutdown",
+          "valueEnum": 39
+        },
+        {
+          "nameEnum": "#40 - Internal failure (PV Input failed to shutdown)",
+          "valueEnum": 40
+        },
+        {
+          "nameEnum": "#41 - Inverter shutdown (panel isolation resistance too low)",
+          "valueEnum": 41
+        },
+        {
+          "nameEnum": "#42 - Inverter shutdown (ground current too high: >30mA)",
+          "valueEnum": 42
+        },
+        {
+          "nameEnum": "#43 - Inverter shutdown (voltage over ground relay too high)",
+          "valueEnum": 43
+        },
+        {
+          "nameEnum": "#50 - Inverter overload (iit protection)",
+          "valueEnum": 50
+        },
+        {
+          "nameEnum": "#51 - Inverter temperature too high",
+          "valueEnum": 51
+        },
+        {
+          "nameEnum": "#52 - Inverter excessive current",
+          "valueEnum": 52
+        },
+        {
+          "nameEnum": "#53 - Inverter dc level (internal dc rail voltage)",
+          "valueEnum": 53
+        },
+        {
+          "nameEnum": "#54 - Inverter ac level (output voltage not ok)",
+          "valueEnum": 54
+        },
+        {
+          "nameEnum": "#55 - Inverter dc fail (dc on output)",
+          "valueEnum": 55
+        },
+        {
+          "nameEnum": "#56 - Inverter ac fail (shape wrong)*/",
+          "valueEnum": 56
+        },
+        {
+          "nameEnum": "#57 - Inverter ac on output (inverter only)",
+          "valueEnum": 57
+        },
+        {
+          "nameEnum": "#58 - Inverter bridge fault (hardware signal)",
+          "valueEnum": 58
+        },
+        {
+          "nameEnum": "#59 - ACIN1 relay test fault",
+          "valueEnum": 59
+        },
+        {
+          "nameEnum": "#60 - ACIN2 relay test fault",
+          "valueEnum": 60
+        },
+        {
+          "nameEnum": "#65 - Device disappeared during parallel operation (broken cable?)",
+          "valueEnum": 65
+        },
+        {
+          "nameEnum": "#66 - Incompatible device encountered for parallel operation (e.g. old firmware/different settings)",
+          "valueEnum": 66
+        },
+        {
+          "nameEnum": "#67 - No BMS",
+          "valueEnum": 67
+        },
+        {
+          "nameEnum": "#68 - Network misconfigured",
+          "valueEnum": 68
+        },
+        {
+          "nameEnum": "#80 - PV Input shutdown",
+          "valueEnum": 80
+        },
+        {
+          "nameEnum": "#81 - PV Input shutdown",
+          "valueEnum": 81
+        },
+        {
+          "nameEnum": "#82 - PV Input shutdown",
+          "valueEnum": 82
+        },
+        {
+          "nameEnum": "#83 - PV Input shutdown",
+          "valueEnum": 83
+        },
+        {
+          "nameEnum": "#84 - PV Input shutdown",
+          "valueEnum": 84
+        },
+        {
+          "nameEnum": "#85 - PV Input shutdown",
+          "valueEnum": 85
+        },
+        {
+          "nameEnum": "#86 - PV Input shutdown",
+          "valueEnum": 86
+        },
+        {
+          "nameEnum": "#87 - PV Input shutdown",
+          "valueEnum": 87
+        },
+        {
+          "nameEnum": "#113 - Non-volatile storage write error",
+          "valueEnum": 113
+        },
+        {
+          "nameEnum": "#114 - CPU temperature to high",
+          "valueEnum": 114
+        },
+        {
+          "nameEnum": "#115 - CAN/SCI communication lost (when critical)",
+          "valueEnum": 115
+        },
+        {
+          "nameEnum": "#116 - Calibration data lost",
+          "valueEnum": 116
+        },
+        {
+          "nameEnum": "#117 - Incompatible firmware encountered",
+          "valueEnum": 117
+        },
+        {
+          "nameEnum": "#118 - Incompatible hardware encountered",
+          "valueEnum": 118
+        },
+        {
+          "nameEnum": "#119 - Settings data lost",
+          "valueEnum": 119
+        },
+        {
+          "nameEnum": "#120 - Reference voltage failure",
+          "valueEnum": 120
+        },
+        {
+          "nameEnum": "#121 - Tester fail",
+          "valueEnum": 121
+        },
+        {
+          "nameEnum": "#122 - Non-volatile history data invalid/corrupted",
+          "valueEnum": 122
+        },
+        {
+          "nameEnum": "#200 - Internal error",
+          "valueEnum": 200
+        },
+        {
+          "nameEnum": "#201 - Internal error",
+          "valueEnum": 201
+        },
+        {
+          "nameEnum": "#203 - Internal error",
+          "valueEnum": 203
+        },
+        {
+          "nameEnum": "#205 - Internal error",
+          "valueEnum": 205
+        },
+        {
+          "nameEnum": "#212 - Internal error",
+          "valueEnum": 212
+        },
+        {
+          "nameEnum": "#215 - Internal error",
+          "valueEnum": 215
+        }
+      ],
+      "id": 148
+    },
+    {
+      "idSite": 462082,
+      "timestamp": 1729710463,
+      "Device": "Solar Charger",
+      "instance": 290,
+      "idDataAttribute": 285,
+      "description": "User yield",
+      "formatWithUnit": "%.2F kWh",
+      "dbusServiceType": "solarcharger",
+      "dbusPath": "/Yield/User",
+      "code": "YU",
+      "bitmask": 0,
+      "formattedValue": "0.78 kWh",
+      "rawValue": "0.78",
+      "id": 149
+    },
+    {
+      "idSite": 462082,
+      "timestamp": 1729710463,
+      "Device": "Solar Charger",
+      "instance": 290,
+      "idDataAttribute": 340,
+      "description": "User yield delta",
+      "formatWithUnit": "%.2F kWh",
+      "dbusServiceType": null,
+      "dbusPath": null,
+      "code": "dYU",
+      "bitmask": 0,
+      "formattedValue": "0.05 kWh",
+      "rawValue": "0.05",
+      "id": 150
+    },
+    {
+      "idSite": 462082,
+      "timestamp": 1729710463,
       "Device": "System overview",
       "instance": 0,
       "idDataAttribute": 571,
@@ -3301,11 +4176,11 @@
           "valueEnum": 260
         }
       ],
-      "id": 126
+      "id": 151
     },
     {
       "idSite": 462082,
-      "timestamp": 1724023347,
+      "timestamp": 1729710463,
       "Device": "System overview",
       "instance": 0,
       "idDataAttribute": 102,
@@ -3315,13 +4190,13 @@
       "dbusPath": null,
       "code": "Pb",
       "bitmask": 0,
-      "formattedValue": "0.01 kWh",
-      "rawValue": "0.00976562",
-      "id": 127
+      "formattedValue": "0.18 kWh",
+      "rawValue": "0.180127",
+      "id": 152
     },
     {
       "idSite": 462082,
-      "timestamp": 1724023347,
+      "timestamp": 1729710463,
       "Device": "System overview",
       "instance": 0,
       "idDataAttribute": 472,
@@ -3343,11 +4218,11 @@
           "valueEnum": 1
         }
       ],
-      "id": 128
+      "id": 153
     },
     {
       "idSite": 462082,
-      "timestamp": 1724023347,
+      "timestamp": 1729710463,
       "Device": "System overview",
       "instance": 0,
       "idDataAttribute": 473,
@@ -3369,11 +4244,11 @@
           "valueEnum": 1
         }
       ],
-      "id": 129
+      "id": 154
     },
     {
       "idSite": 462082,
-      "timestamp": 1724023347,
+      "timestamp": 1729710463,
       "Device": "System overview",
       "instance": 0,
       "idDataAttribute": 475,
@@ -3395,11 +4270,11 @@
           "valueEnum": 1
         }
       ],
-      "id": 130
+      "id": 155
     },
     {
       "idSite": 462082,
-      "timestamp": 1724023347,
+      "timestamp": 1729710463,
       "Device": "System overview",
       "instance": 0,
       "idDataAttribute": 474,
@@ -3421,11 +4296,11 @@
           "valueEnum": 1
         }
       ],
-      "id": 131
+      "id": 156
     },
     {
       "idSite": 462082,
-      "timestamp": 1724023347,
+      "timestamp": 1729710463,
       "Device": "System overview",
       "instance": 0,
       "idDataAttribute": 476,
@@ -3447,11 +4322,11 @@
           "valueEnum": 1
         }
       ],
-      "id": 132
+      "id": 157
     },
     {
       "idSite": 462082,
-      "timestamp": 1724023347,
+      "timestamp": 1729710463,
       "Device": "System overview",
       "instance": 0,
       "idDataAttribute": 477,
@@ -3473,11 +4348,11 @@
           "valueEnum": 1
         }
       ],
-      "id": 133
+      "id": 158
     },
     {
       "idSite": 462082,
-      "timestamp": 1724023347,
+      "timestamp": 1729710463,
       "Device": "System overview",
       "instance": 0,
       "idDataAttribute": 478,
@@ -3499,11 +4374,11 @@
           "valueEnum": 1
         }
       ],
-      "id": 134
+      "id": 159
     },
     {
       "idSite": 462082,
-      "timestamp": 1724023347,
+      "timestamp": 1729710463,
       "Device": "System overview",
       "instance": 0,
       "idDataAttribute": 113,
@@ -3513,13 +4388,13 @@
       "dbusPath": "/Dc/Pv/Power",
       "code": "Pdc",
       "bitmask": 0,
-      "formattedValue": "111 W",
-      "rawValue": "110.628",
-      "id": 135
+      "formattedValue": "2092 W",
+      "rawValue": "2092.15",
+      "id": 160
     },
     {
       "idSite": 462082,
-      "timestamp": 1724023347,
+      "timestamp": 1729710463,
       "Device": "System overview",
       "instance": 0,
       "idDataAttribute": 143,
@@ -3529,13 +4404,13 @@
       "dbusPath": "/Dc/Battery/Voltage",
       "code": "bv",
       "bitmask": 0,
-      "formattedValue": "52.66 V",
-      "rawValue": "52.66",
-      "id": 136
+      "formattedValue": "55.07 V",
+      "rawValue": "55.07",
+      "id": 161
     },
     {
       "idSite": 462082,
-      "timestamp": 1724023347,
+      "timestamp": 1729710463,
       "Device": "System overview",
       "instance": 0,
       "idDataAttribute": 147,
@@ -3545,13 +4420,13 @@
       "dbusPath": "/Dc/Battery/Current",
       "code": "bc",
       "bitmask": 0,
-      "formattedValue": "-26.50 A",
-      "rawValue": "-26.5",
-      "id": 137
+      "formattedValue": "102.10 A",
+      "rawValue": "102.1",
+      "id": 162
     },
     {
       "idSite": 462082,
-      "timestamp": 1724023347,
+      "timestamp": 1729710463,
       "Device": "System overview",
       "instance": 0,
       "idDataAttribute": 243,
@@ -3561,13 +4436,13 @@
       "dbusPath": "/Dc/Battery/Power",
       "code": "bp",
       "bitmask": 0,
-      "formattedValue": "-1395 W",
-      "rawValue": "-1395.49",
-      "id": 138
+      "formattedValue": "5623 W",
+      "rawValue": "5622.65",
+      "id": 163
     },
     {
       "idSite": 462082,
-      "timestamp": 1724023347,
+      "timestamp": 1729710463,
       "Device": "System overview",
       "instance": 0,
       "idDataAttribute": 144,
@@ -3577,13 +4452,13 @@
       "dbusPath": "/Dc/Battery/Soc",
       "code": "bs",
       "bitmask": 0,
-      "formattedValue": "97.7 %",
-      "rawValue": "97.7",
-      "id": 139
+      "formattedValue": "55.8 %",
+      "rawValue": "55.8",
+      "id": 164
     },
     {
       "idSite": 462082,
-      "timestamp": 1724023347,
+      "timestamp": 1729710463,
       "Device": "System overview",
       "instance": 0,
       "idDataAttribute": 215,
@@ -3593,8 +4468,8 @@
       "dbusPath": "/Dc/Battery/State",
       "code": "bst",
       "bitmask": 0,
-      "formattedValue": "discharging",
-      "rawValue": 2,
+      "formattedValue": "charging",
+      "rawValue": 1,
       "dataAttributeEnumValues": [
         {
           "nameEnum": "Idle",
@@ -3609,11 +4484,11 @@
           "valueEnum": 2
         }
       ],
-      "id": 140
+      "id": 165
     },
     {
       "idSite": 462082,
-      "timestamp": 1724023347,
+      "timestamp": 1729710463,
       "Device": "System overview",
       "instance": 0,
       "idDataAttribute": 145,
@@ -3623,13 +4498,13 @@
       "dbusPath": "/Dc/Battery/ConsumedAmphours",
       "code": "ba",
       "bitmask": 0,
-      "formattedValue": "-10.40 Ah",
-      "rawValue": "-10.4",
-      "id": 141
+      "formattedValue": "-198.20 Ah",
+      "rawValue": "-198.2",
+      "id": 166
     },
     {
       "idSite": 462082,
-      "timestamp": 1724023347,
+      "timestamp": 1729709262,
       "Device": "System overview",
       "instance": 0,
       "idDataAttribute": 146,
@@ -3639,13 +4514,13 @@
       "dbusPath": "/Dc/Battery/TimeToGo",
       "code": "bt",
       "bitmask": 0,
-      "formattedValue": "15.35 h",
-      "rawValue": "15.35",
-      "id": 142
+      "formattedValue": "126.78 h",
+      "rawValue": "126.78",
+      "id": 167
     },
     {
       "idSite": 462082,
-      "timestamp": 1724023347,
+      "timestamp": 1729710463,
       "Device": "System overview",
       "instance": 0,
       "idDataAttribute": 579,
@@ -3671,11 +4546,11 @@
           "valueEnum": 2
         }
       ],
-      "id": 143
+      "id": 168
     },
     {
       "idSite": 462082,
-      "timestamp": 1724023347,
+      "timestamp": 1729710463,
       "Device": "System overview",
       "instance": 0,
       "idDataAttribute": 580,
@@ -3697,11 +4572,11 @@
           "valueEnum": 1
         }
       ],
-      "id": 144
+      "id": 169
     },
     {
       "idSite": 462082,
-      "timestamp": 1724023347,
+      "timestamp": 1729710463,
       "Device": "System overview",
       "instance": 0,
       "idDataAttribute": 531,
@@ -3711,13 +4586,13 @@
       "dbusPath": "/Timers/TimeOff",
       "code": "To",
       "bitmask": 0,
-      "formattedValue": "450.00 s",
-      "rawValue": 450,
-      "id": 145
+      "formattedValue": "460.00 s",
+      "rawValue": 460,
+      "id": 170
     },
     {
       "idSite": 462082,
-      "timestamp": 1724023347,
+      "timestamp": 1729710463,
       "Device": "System overview",
       "instance": 0,
       "idDataAttribute": 833,
@@ -3729,8 +4604,574 @@
       "bitmask": 0,
       "formattedValue": "0",
       "rawValue": 0,
-      "id": 146
+      "id": 171
+    },
+    {
+      "idSite": 462082,
+      "timestamp": 1725713754,
+      "Device": "System overview",
+      "instance": 0,
+      "idDataAttribute": 915,
+      "description": "Generator run-time since last start",
+      "formatWithUnit": "%d",
+      "dbusServiceType": "system",
+      "dbusPath": "/Ac/Genset/Runtime",
+      "code": "gRT",
+      "bitmask": 0,
+      "formattedValue": "0",
+      "rawValue": 0,
+      "id": 172
+    },
+    {
+      "idSite": 462082,
+      "timestamp": 1725713754,
+      "Device": "System overview",
+      "instance": 0,
+      "idDataAttribute": 917,
+      "description": "Generator run by condition code",
+      "formatWithUnit": "%s",
+      "dbusServiceType": "system",
+      "dbusPath": "/Ac/Genset/RunningByConditionCode",
+      "code": "gRC",
+      "bitmask": 0,
+      "formattedValue": "Stopped",
+      "rawValue": 0,
+      "dataAttributeEnumValues": [
+        {
+          "nameEnum": "Stopped",
+          "valueEnum": 0
+        },
+        {
+          "nameEnum": "Manual start",
+          "valueEnum": 1
+        },
+        {
+          "nameEnum": "Test run",
+          "valueEnum": 2
+        },
+        {
+          "nameEnum": "Loss of communication",
+          "valueEnum": 3
+        },
+        {
+          "nameEnum": "State of Charge",
+          "valueEnum": 4
+        },
+        {
+          "nameEnum": "AC Load",
+          "valueEnum": 5
+        },
+        {
+          "nameEnum": "Battery current",
+          "valueEnum": 6
+        },
+        {
+          "nameEnum": "Battery voltage",
+          "valueEnum": 7
+        },
+        {
+          "nameEnum": "Inverter high temp",
+          "valueEnum": 8
+        },
+        {
+          "nameEnum": "Inverter overload",
+          "valueEnum": 9
+        },
+        {
+          "nameEnum": "Stop on AC-1",
+          "valueEnum": 10
+        }
+      ],
+      "id": 173
+    },
+    {
+      "idSite": 462082,
+      "timestamp": 1725713754,
+      "Device": "Generator start/stop",
+      "instance": 0,
+      "idDataAttribute": 441,
+      "description": "Generator not detected at AC-input",
+      "formatWithUnit": "%s",
+      "dbusServiceType": null,
+      "dbusPath": null,
+      "code": "gaNG",
+      "bitmask": 0,
+      "formattedValue": "No alarm",
+      "rawValue": 0,
+      "dataAttributeEnumValues": [
+        {
+          "nameEnum": "No alarm",
+          "valueEnum": 0
+        },
+        {
+          "nameEnum": "Alarm",
+          "valueEnum": 2
+        }
+      ],
+      "id": 174
+    },
+    {
+      "idSite": 462082,
+      "timestamp": 1725713754,
+      "Device": "Generator start/stop",
+      "instance": 0,
+      "idDataAttribute": 1029,
+      "description": "Total run time",
+      "formatWithUnit": "%d",
+      "dbusServiceType": "generator",
+      "dbusPath": "/Runtime",
+      "code": "gaR",
+      "bitmask": 0,
+      "formattedValue": "0",
+      "rawValue": 0,
+      "id": 175
+    },
+    {
+      "idSite": 462082,
+      "timestamp": 1725713754,
+      "Device": "Generator start/stop",
+      "instance": 0,
+      "idDataAttribute": 1030,
+      "description": "Run time today",
+      "formatWithUnit": "%d",
+      "dbusServiceType": "generator",
+      "dbusPath": "/TodayRuntime",
+      "code": "gaT",
+      "bitmask": 0,
+      "formattedValue": "0",
+      "rawValue": 0,
+      "id": 176
+    },
+    {
+      "idSite": 462082,
+      "timestamp": 1725713754,
+      "Device": "Generator start/stop",
+      "instance": 0,
+      "idDataAttribute": 1031,
+      "description": "Autostart error",
+      "formatWithUnit": "%s",
+      "dbusServiceType": "generator",
+      "dbusPath": "/Error",
+      "code": "gaE",
+      "bitmask": 0,
+      "formattedValue": "No Error",
+      "rawValue": 0,
+      "dataAttributeEnumValues": [
+        {
+          "nameEnum": "No Error",
+          "valueEnum": 0
+        },
+        {
+          "nameEnum": "Remote control disabled",
+          "valueEnum": 1
+        },
+        {
+          "nameEnum": "Remote fault",
+          "valueEnum": 2
+        }
+      ],
+      "id": 177
+    },
+    {
+      "idSite": 462082,
+      "timestamp": 1725713754,
+      "Device": "Generator start/stop",
+      "instance": 0,
+      "idDataAttribute": 1032,
+      "description": "Manual start",
+      "formatWithUnit": "%s",
+      "dbusServiceType": "generator",
+      "dbusPath": "/ManualStart",
+      "code": "gaM",
+      "bitmask": 0,
+      "formattedValue": "Stopped",
+      "rawValue": 0,
+      "dataAttributeEnumValues": [
+        {
+          "nameEnum": "Stopped",
+          "valueEnum": 0
+        },
+        {
+          "nameEnum": "Manually started",
+          "valueEnum": 1
+        }
+      ],
+      "id": 178
+    },
+    {
+      "idSite": 462082,
+      "timestamp": 1725713754,
+      "Device": "Generator start/stop",
+      "instance": 0,
+      "idDataAttribute": 1288,
+      "description": "Service due",
+      "formatWithUnit": "%s",
+      "dbusServiceType": "generator",
+      "dbusPath": "/Alarms/ServiceIntervalExceeded",
+      "code": "gasr",
+      "bitmask": 0,
+      "formattedValue": "No",
+      "rawValue": 0,
+      "dataAttributeEnumValues": [
+        {
+          "nameEnum": "No",
+          "valueEnum": 0
+        },
+        {
+          "nameEnum": "Warning",
+          "valueEnum": 1
+        }
+      ],
+      "id": 179
+    },
+    {
+      "idSite": 462082,
+      "timestamp": 1725713754,
+      "Device": "Generator start/stop",
+      "instance": 0,
+      "idDataAttribute": 1033,
+      "description": "Manual start timer",
+      "formatWithUnit": "%d",
+      "dbusServiceType": "generator",
+      "dbusPath": "/ManualStartTimer",
+      "code": "gaMT",
+      "bitmask": 0,
+      "formattedValue": "0",
+      "rawValue": 0,
+      "id": 180
+    },
+    {
+      "idSite": 462082,
+      "timestamp": 1725713733,
+      "Device": "Generator start/stop",
+      "instance": 0,
+      "idDataAttribute": 1505,
+      "description": "Service interval",
+      "formatWithUnit": "%d s",
+      "dbusServiceType": "generator",
+      "dbusPath": "/ServiceInterval",
+      "code": "gasi",
+      "bitmask": 0,
+      "formattedValue": "0 s",
+      "rawValue": 0,
+      "id": 181
+    },
+    {
+      "idSite": 462082,
+      "timestamp": 1725713754,
+      "Device": "Generator start/stop",
+      "instance": 0,
+      "idDataAttribute": 1034,
+      "description": "Quiet hours",
+      "formatWithUnit": "%s",
+      "dbusServiceType": "generator",
+      "dbusPath": "/QuietHours",
+      "code": "gaQ",
+      "bitmask": 0,
+      "formattedValue": "Normal mode",
+      "rawValue": 0,
+      "dataAttributeEnumValues": [
+        {
+          "nameEnum": "Normal mode",
+          "valueEnum": 0
+        },
+        {
+          "nameEnum": "Quiet mode",
+          "valueEnum": 1
+        }
+      ],
+      "id": 182
+    },
+    {
+      "idSite": 462082,
+      "timestamp": 1725713733,
+      "Device": "Generator start/stop",
+      "instance": 0,
+      "idDataAttribute": 1043,
+      "description": "Type of generator controlled by this start/stop instance",
+      "formatWithUnit": "%s",
+      "dbusServiceType": "generator",
+      "dbusPath": "/Type",
+      "code": "gat",
+      "bitmask": 0,
+      "formattedValue": "Generic relay-controller",
+      "rawValue": 0,
+      "dataAttributeEnumValues": [
+        {
+          "nameEnum": "Generic relay-controller",
+          "valueEnum": 0
+        },
+        {
+          "nameEnum": "FischerPanda",
+          "valueEnum": 1
+        }
+      ],
+      "id": 183
+    },
+    {
+      "idSite": 462082,
+      "timestamp": 1725713754,
+      "Device": "Generator start/stop",
+      "instance": 0,
+      "idDataAttribute": 1582,
+      "description": "GX Auto start/stop disabled",
+      "formatWithUnit": "%s",
+      "dbusServiceType": "generator",
+      "dbusPath": "/Alarms/AutoStartDisabled",
+      "code": "gada",
+      "bitmask": 0,
+      "formattedValue": "OK",
+      "rawValue": 0,
+      "dataAttributeEnumValues": [
+        {
+          "nameEnum": "OK",
+          "valueEnum": 0
+        },
+        {
+          "nameEnum": "Warning",
+          "valueEnum": 1
+        },
+        {
+          "nameEnum": "Alarm",
+          "valueEnum": 2
+        }
+      ],
+      "id": 184
+    },
+    {
+      "idSite": 462082,
+      "timestamp": 1725713754,
+      "Device": "Generator start/stop",
+      "instance": 0,
+      "idDataAttribute": 1585,
+      "description": "Remote start is disabled on the genset",
+      "formatWithUnit": "%s",
+      "dbusServiceType": "generator",
+      "dbusPath": "/Alarms/RemoteStartModeDisabled",
+      "code": "gara",
+      "bitmask": 0,
+      "formattedValue": "OK",
+      "rawValue": 0,
+      "dataAttributeEnumValues": [
+        {
+          "nameEnum": "OK",
+          "valueEnum": 0
+        },
+        {
+          "nameEnum": "Warning",
+          "valueEnum": 1
+        },
+        {
+          "nameEnum": "Alarm",
+          "valueEnum": 2
+        }
+      ],
+      "id": 185
+    },
+    {
+      "idSite": 462082,
+      "timestamp": 1725713733,
+      "Device": "Generator start/stop",
+      "instance": 0,
+      "idDataAttribute": 1048,
+      "description": "Generator autostart enabled",
+      "formatWithUnit": "%s",
+      "dbusServiceType": "generator",
+      "dbusPath": "/AutoStartEnabled",
+      "code": "gaA",
+      "bitmask": 0,
+      "formattedValue": "Auto stop/start disabled",
+      "rawValue": 0,
+      "dataAttributeEnumValues": [
+        {
+          "nameEnum": "Auto stop/start disabled",
+          "valueEnum": 0
+        },
+        {
+          "nameEnum": "Auto stop/start enabled",
+          "valueEnum": 1
+        }
+      ],
+      "id": 186
+    },
+    {
+      "idSite": 462082,
+      "timestamp": 1725713754,
+      "Device": "Generator start/stop",
+      "instance": 0,
+      "idDataAttribute": 1166,
+      "description": "Generator state",
+      "formatWithUnit": "%s",
+      "dbusServiceType": "generator",
+      "dbusPath": "/State",
+      "code": "gaS",
+      "bitmask": 0,
+      "formattedValue": "Stopped",
+      "rawValue": 0,
+      "dataAttributeEnumValues": [
+        {
+          "nameEnum": "Stopped",
+          "valueEnum": 0
+        },
+        {
+          "nameEnum": "Running",
+          "valueEnum": 1
+        },
+        {
+          "nameEnum": "Warm-up",
+          "valueEnum": 2
+        },
+        {
+          "nameEnum": "Cool-down",
+          "valueEnum": 3
+        },
+        {
+          "nameEnum": "Stopping",
+          "valueEnum": 4
+        },
+        {
+          "nameEnum": "Error",
+          "valueEnum": 10
+        }
+      ],
+      "id": 187
+    },
+    {
+      "idSite": 462082,
+      "timestamp": 1729702509,
+      "Device": "Temperature sensor",
+      "instance": 29,
+      "idDataAttribute": 637,
+      "description": "Temperature custom name",
+      "formatWithUnit": "%s",
+      "dbusServiceType": null,
+      "dbusPath": null,
+      "code": "tscn",
+      "bitmask": 0,
+      "formattedValue": "",
+      "rawValue": "",
+      "id": 188
+    },
+    {
+      "idSite": 462082,
+      "timestamp": 1729702509,
+      "Device": "Temperature sensor",
+      "instance": 29,
+      "idDataAttribute": 445,
+      "description": "Product ID",
+      "formatWithUnit": "%s",
+      "dbusServiceType": null,
+      "dbusPath": null,
+      "code": "tsP",
+      "bitmask": 0,
+      "formattedValue": "0",
+      "rawValue": "0",
+      "id": 189
+    },
+    {
+      "idSite": 462082,
+      "timestamp": 1729702509,
+      "Device": "Temperature sensor",
+      "instance": 29,
+      "idDataAttribute": 446,
+      "description": "Firmware version",
+      "formatWithUnit": "%s",
+      "dbusServiceType": null,
+      "dbusPath": null,
+      "code": "tsV",
+      "bitmask": 0,
+      "formattedValue": "Linux",
+      "rawValue": "Linux",
+      "id": 190
+    },
+    {
+      "idSite": 462082,
+      "timestamp": 1729702509,
+      "Device": "Temperature sensor",
+      "instance": 29,
+      "idDataAttribute": 449,
+      "description": "Temperature type",
+      "formatWithUnit": "%s",
+      "dbusServiceType": null,
+      "dbusPath": null,
+      "code": "tst",
+      "bitmask": 0,
+      "formattedValue": "Generic",
+      "rawValue": 2,
+      "dataAttributeEnumValues": [
+        {
+          "nameEnum": "Battery",
+          "valueEnum": 0
+        },
+        {
+          "nameEnum": "Fridge",
+          "valueEnum": 1
+        },
+        {
+          "nameEnum": "Generic",
+          "valueEnum": 2
+        }
+      ],
+      "id": 191
+    },
+    {
+      "idSite": 462082,
+      "timestamp": 1729710463,
+      "Device": "Temperature sensor",
+      "instance": 29,
+      "idDataAttribute": 450,
+      "description": "Temperature",
+      "formatWithUnit": "%.1F °C",
+      "dbusServiceType": "temperature",
+      "dbusPath": "/Temperature",
+      "code": "tsT",
+      "bitmask": 0,
+      "formattedValue": "51.6 °C",
+      "rawValue": "51.6",
+      "id": 192
+    },
+    {
+      "idSite": 462082,
+      "timestamp": 1729710463,
+      "Device": "Temperature sensor",
+      "instance": 29,
+      "idDataAttribute": 451,
+      "description": "Temperature status",
+      "formatWithUnit": "%s",
+      "dbusServiceType": "temperature",
+      "dbusPath": "/Status",
+      "code": "tsS",
+      "bitmask": 0,
+      "formattedValue": "OK",
+      "rawValue": 0,
+      "dataAttributeEnumValues": [
+        {
+          "nameEnum": "OK",
+          "valueEnum": 0
+        },
+        {
+          "nameEnum": "Open circuit",
+          "valueEnum": 1
+        },
+        {
+          "nameEnum": "Short circuited",
+          "valueEnum": 2
+        },
+        {
+          "nameEnum": "Reverse Polarity",
+          "valueEnum": 3
+        },
+        {
+          "nameEnum": "Unknown",
+          "valueEnum": 4
+        },
+        {
+          "nameEnum": "Error",
+          "valueEnum": 5
+        }
+      ],
+      "id": 193
     }
   ],
-  "num_records": 146
+  "num_records": 193
 }
