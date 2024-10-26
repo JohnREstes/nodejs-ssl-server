@@ -523,7 +523,7 @@ const getLastLines = (filePath, numLines = 28) => {
     });
 };
 
-app.get('/api/lastTwentyEight', authenticateToken, async (req, res) => {
+app.get('/api/lastEntry', authenticateToken, async (req, res) => {
     try {
         const lastTwentyEight = await getLastLines('solar_data.txt', 28);
         res.json({ lastTwentyEight });
