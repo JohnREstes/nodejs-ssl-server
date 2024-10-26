@@ -18,7 +18,7 @@ const app = express();
 const hostname = '127.0.0.1';
 const port = 3000;
 
-const CACHE_TIMEOUT = 30 * 1000; // 30 seconds in milliseconds
+const CACHE_TIMEOUT = 15 * 1000; // 15 seconds in milliseconds
 
 const secretKey = process.env.SECRET_KEY;
 const hashedPassword = process.env.HASHED_PASSWORD;
@@ -470,17 +470,19 @@ const writeDataToFile = async () => {
     const timeZone = 'America/Cancun';
     const currentDate = moment().tz(timeZone).format('YYYY-MM-DD');
     
+    
     try {
         const data1 = await fetchVictronData();
         const data2 = await getGrowattData();
 
         const towerDayTotal = data1[4]['formattedValue'] || 'Data not available';
+        const pergolaDayTotal = data1[8]['formattedValue'] || 'Data not available';
         const yolandaDayTotal = data2.yolandaDataTotal.epvToday || 'Data not available';
         const casa1DayTotal = data2.casaMJData1Total.epvToday || 'Data not available';
         const casa2DayTotal = data2.casaMJData2Total.epvToday || 'Data not available';
 
         // Prepare the data to write to the file
-        const data = `Date: ${currentDate}: [${towerDayTotal}, ${yolandaDayTotal}, ${casa1DayTotal}, ${casa2DayTotal}]\n`;
+        const data = `Date: ${currentDate}: [${towerDayTotal}, ${pergolaDayTotal}, ${yolandaDayTotal}, ${casa1DayTotal}, ${casa2DayTotal}]\n`;
 
         // Write the values to a file
         fs.appendFile('solar_data.txt', data, (err) => {
@@ -496,14 +498,14 @@ const writeDataToFile = async () => {
 };
 
 // Schedule the task to run at 5:58 PM Cancun Time
-cron.schedule('58 17 * * *', async () => {
+cron.schedule('58 17 * * *', async () => { //58 17 * * *
     await writeDataToFile();
 }, {
     timezone: "America/Cancun"
 });
 
-// Function to get the last entry from the file
-const getLastEntry = (filePath) => {
+// Function to get the last 28 lines from the file
+const getLastLines = (filePath, numLines = 28) => {
     return new Promise((resolve, reject) => {
         fs.readFile(filePath, 'utf8', (err, data) => {
             if (err) {
@@ -513,35 +515,19 @@ const getLastEntry = (filePath) => {
             // Split the file data by newlines to get an array of lines
             const lines = data.trim().split('\n');
 
-            // Get the last line (most recent entry)
-            const lastLine = lines[lines.length - 1];
+            // Extract the last 'numLines' lines (or fewer if the file has fewer lines)
+            const lastLines = lines.slice(-numLines);
 
-            resolve(lastLine);
+            resolve(lastLines.join('\n'));  // Join back to a string for easier response
         });
     });
 };
 
-// Function to read the last entry from the file
-const readSolarTotal = async () => {
-    try {
-        const lastEntry = await getLastEntry('solar_data.txt');
-        return lastEntry;
-    } catch (error) {
-        console.error('Error reading file:', error);
-    }
-};
 
-// Usage example: Run the task immediately for testing and then get the last entry
-// (async () => {
-//     await writeDataToFile(); // Manually run the task
-//     const lastEntry = await readSolarTotal(); // Test read
-//     console.log('Last Entry:', lastEntry);
-// })();
-
-// API endpoint to return the last entry from the file
 app.get('/api/lastEntry', authenticateToken, async (req, res) => {
     try {
-        const lastEntry = await getLastEntry('solar_data.txt');
+        const lastEntry = await getLastLines('solar_data.txt', 28);
+        console.log(lastEntry)
         res.json({ lastEntry });
     } catch (error) {
         res.status(500).send('Error reading file');
