@@ -525,8 +525,8 @@ const getLastLines = (filePath, numLines = 28) => {
 
 app.get('/api/lastEntry', authenticateToken, async (req, res) => {
     try {
-        const lastTwentyEight = await getLastLines('solar_data.txt', 28);
-        res.json({ lastTwentyEight });
+        const lastEntry = await getLastLines('solar_data.txt', 28);
+        res.json({ lastEntry });
     } catch (error) {
         res.status(500).send('Error reading file');
     }
