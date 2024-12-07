@@ -260,6 +260,7 @@ async function fetchVictronData() {
                 51, // State of charge
                 94, // Daily Yield
                 96, // Yesterday's Daily Yield
+                118, //Serial Number
                 146, //TimeToGo
                 442, // PV Power
                 243, //Battery Power
