@@ -297,6 +297,16 @@ function authenticateToken(req, res, next) {
 
     const tokenWithoutBearer = token.replace('Bearer ', '');
 
+    // Check if the token matches the predefined long-term token
+    const longTermToken = process.env.HA_LONG_TERM_TOKEN; // Define this in your .env file
+
+    if (tokenWithoutBearer === longTermToken) {
+        // If it's the long-term token, bypass JWT verification
+        req.user = { id: 'home-assistant', role: 'trusted-system' }; // Add any role/user info you want
+        return next();
+    }
+
+    // Verify the token as a JWT
     jwt.verify(tokenWithoutBearer, secretKey, (err, user) => {
         if (err) {
             console.error('Token verification error:', err);
@@ -307,6 +317,7 @@ function authenticateToken(req, res, next) {
         next();
     });
 }
+
 
 // Create an SES client
 const sesClient = new SESClient({
