@@ -475,20 +475,41 @@ async function getGrowattData() {
 //   }
 // }, 5 * 60 * 1000); // Check every 5 Minutes
 
-
-
 // Function to write data to the file
 const writeDataToFile = async () => {
     const timeZone = 'America/Cancun';
     const currentDate = moment().tz(timeZone).format('YYYY-MM-DD');
-    
-    
+
     try {
         const data1 = await fetchVictronData();
         const data2 = await getGrowattData();
 
-        const towerDayTotal = data1[4]['formattedValue'] || 'Data not available';
-        const pergolaDayTotal = data1[8]['formattedValue'] || 'Data not available';
+        // Step 1: Find instances for the required serial numbers
+        const towerSerial = 'HQ2131HZ2ZV';
+        const pergolaSerial = 'HQ2342AE2NT';
+
+        const towerInstance = data1.find(
+            (item) =>
+                item.idDataAttribute === 118 && item.formattedValue === towerSerial
+        )?.instance;
+
+        const pergolaInstance = data1.find(
+            (item) =>
+                item.idDataAttribute === 118 && item.formattedValue === pergolaSerial
+        )?.instance;
+
+        // Step 2: Use instances to get the "Yield today" values
+        const towerDayTotal = data1.find(
+            (item) =>
+                item.idDataAttribute === 94 && item.instance === towerInstance
+        )?.formattedValue || 'Data not available';
+
+        const pergolaDayTotal = data1.find(
+            (item) =>
+                item.idDataAttribute === 94 && item.instance === pergolaInstance
+        )?.formattedValue || 'Data not available';
+
+        // Step 3: Fetch Growatt data
         const yolandaDayTotal = data2.yolandaDataTotal.epvToday || 'Data not available';
         const casa1DayTotal = data2.casaMJData1Total.epvToday || 'Data not available';
         const casa2DayTotal = data2.casaMJData2Total.epvToday || 'Data not available';
@@ -508,6 +529,9 @@ const writeDataToFile = async () => {
         console.error('Error running methods:', error);
     }
 };
+
+
+writeDataToFile()
 
 // Schedule the task to run at 5:58 PM Cancun Time
 cron.schedule('58 17 * * *', async () => { //58 17 * * *
