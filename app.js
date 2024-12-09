@@ -530,9 +530,6 @@ const writeDataToFile = async () => {
     }
 };
 
-
-writeDataToFile()
-
 // Schedule the task to run at 5:58 PM Cancun Time
 cron.schedule('58 17 * * *', async () => { //58 17 * * *
     await writeDataToFile();
