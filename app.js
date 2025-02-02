@@ -11,8 +11,15 @@ import fs from 'fs'
 import cron from 'node-cron';
 import moment from 'moment-timezone';
 import Growatt from 'growatt';
+import mongoose from 'mongoose';
 
 dotenv.config();
+
+mongoose.connect(process.env.MONGO_URI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+}).then(() => console.log('Connected to MongoDB'))
+  .catch(err => console.error('MongoDB connection error:', err));
 
 const app = express();
 const hostname = '127.0.0.1';
@@ -23,6 +30,8 @@ const CACHE_TIMEOUT = 15 * 1000; // 15 seconds in milliseconds
 const secretKey = process.env.SECRET_KEY;
 const hashedPassword = process.env.HASHED_PASSWORD;
 const version = '2.0.1';
+
+const user = null;
 
 const corsOptions = {
     origin: '*',
@@ -57,20 +66,61 @@ app.get('/', (req, res) => {
     console.log(`[Version ${version}]: New request => http://${hostname}:${port}` + req.url);
 });
 
-app.post('/login', (req, res) => {
-    const { username, password } = req.body;
+import User from './models/User.js';
 
-    const user = users.find(u => u.username === username);
+app.post('/register', async (req, res) => {
+    try {
+        const { username, password, victronUsername, victronPassword, growattUsername, growattPassword, haLongTermKey } = req.body;
 
-    if (user && bcrypt.compareSync(password, user.password)) {
-        console.log('Password comparison successful');
-        const token = jwt.sign({ userId: user.id }, secretKey, { expiresIn: '30d' });
-        res.json({ token });
-    } else {
-        console.log('Password comparison failed');
-        res.status(401).json({ error: 'Invalid credentials' });
+        // Check if the user already exists
+        const existingUser = await User.findOne({ username });
+        if (existingUser) return res.status(400).json({ error: 'Username already exists' });
+
+        // Hash the password
+        const hashedPassword = await bcrypt.hash(password, 10);
+
+        // Save user to MongoDB
+        const newUser = new User({ 
+            username, 
+            password: hashedPassword, 
+            victronUsername, 
+            victronPassword, 
+            growattUsername, 
+            growattPassword, 
+            haLongTermKey 
+        });
+        await newUser.save();
+
+        res.json({ message: 'User registered successfully' });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: 'Internal Server Error' });
     }
 });
+
+app.post('/login', async (req, res) => {
+    const { username, password } = req.body;
+
+    try {
+        user = await User.findOne({ username });
+
+        if (!user) return res.status(401).json({ error: 'Invalid credentials' });
+
+        // Compare passwords
+        if (bcrypt.compareSync(password, user.password)) {
+            console.log('Password comparison successful');
+            const token = jwt.sign({ userId: user._id }, secretKey, { expiresIn: '30d' });
+            res.json({ token });
+        } else {
+            console.log('Password comparison failed');
+            res.status(401).json({ error: 'Invalid credentials' });
+        }
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: 'Internal Server Error' });
+    }
+});
+
 
 app.get('/protected-route', authenticateToken, (req, res) => {
     res.json({ message: 'This is a protected route!' });
@@ -153,8 +203,8 @@ async function fetchVictronData() {
         return victronCache.data;
     }
 
-    const usernameVic = process.env.USERNAME;
-    const passwordVic = process.env.PASSWORD;
+    const usernameVic = user.victronUsername;
+    const passwordVic = user.victronPassword;
 
     return await fetchData()
 
@@ -298,7 +348,7 @@ function authenticateToken(req, res, next) {
     const tokenWithoutBearer = token.replace('Bearer ', '');
 
     // Check if the token matches the predefined long-term token
-    const longTermToken = process.env.HA_LONG_TERM_TOKEN; // Define this in your .env file
+    const longTermToken = user.haLongTermKey; // Define this in your .env file
 
     if (tokenWithoutBearer === longTermToken) {
         // If it's the long-term token, bypass JWT verification
@@ -392,7 +442,7 @@ let isLoggedIn = false;
 
 async function loginGrowatt() {
     if (isLoggedIn) return;
-    await growatt.login(process.env.GROWATT_USER, process.env.GROWATT_PASSWORD);
+    await growatt.login(user.growattUsername, user.growattPassword);
     isLoggedIn = true;
     console.log("Growatt login complete")
     return;
