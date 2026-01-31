@@ -619,6 +619,7 @@ app.get('/api/lastEntry', authenticateToken, async (req, res) => {
 });
 
 app.post('/api/ha/sensor', authenticateToken, async (req, res) => {
+    console.log('[HA INGEST RAW]', JSON.stringify(req.body, null, 2));
     try {
         const {
             entity_id,
