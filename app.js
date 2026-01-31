@@ -614,3 +614,41 @@ app.get('/api/lastEntry', authenticateToken, async (req, res) => {
         res.status(500).send('Error reading file');
     }
 });
+
+app.post('/api/ha/sensor', authenticateToken, async (req, res) => {
+    try {
+        const {
+            entity_id,
+            state,
+            attributes,
+            last_changed,
+            timestamp
+        } = req.body;
+
+        if (!entity_id) {
+            return res.status(400).json({ error: 'Missing entity_id' });
+        }
+
+        console.log('[HA]', entity_id, state);
+
+        // Example: store latest HA data in memory
+        if (!cachedData.homeAssistant) {
+            cachedData.homeAssistant = {};
+        }
+
+        cachedData.homeAssistant[entity_id] = {
+            state,
+            attributes,
+            last_changed,
+            timestamp: timestamp || new Date().toISOString()
+        };
+
+        // 🔁 OPTIONAL: trigger logic
+        // await evaluateAutomation(entity_id, state);
+
+        res.json({ status: 'ok' });
+    } catch (err) {
+        console.error('HA ingest error:', err);
+        res.status(500).json({ error: 'Internal Server Error' });
+    }
+});
