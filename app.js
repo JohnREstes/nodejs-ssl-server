@@ -208,8 +208,13 @@ async function fetchVictronData() {
         return victronCache.data;
     }
 
-    const usernameVic = user.victronUsername;
-    const passwordVic = user.victronPassword;
+        const usernameVic = process.env.USERNAME;
+        const passwordVic = process.env.PASSWORD;
+
+        if (!usernameVic || !passwordVic) {
+            throw new Error('Victron credentials not set in environment');
+        }
+
 
     return await fetchData()
 
