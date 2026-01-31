@@ -340,33 +340,23 @@ async function fetchVictronData() {
 
 function authenticateToken(req, res, next) {
     const token = req.header('Authorization');
-
-    if (!token) {
-        return res.status(401).json({ error: 'Unauthorized - Token not provided' });
-    }
+    if (!token) return res.status(401).json({ error: 'Unauthorized' });
 
     const tokenWithoutBearer = token.replace('Bearer ', '');
 
-    // Check if the token matches the predefined long-term token
-    const longTermToken = user.haLongTermKey; // Define this in your .env file
-
-    if (tokenWithoutBearer === longTermToken) {
-        // If it's the long-term token, bypass JWT verification
-        req.user = { id: 'home-assistant', role: 'trusted-system' }; // Add any role/user info you want
+    // ✅ Home Assistant system token
+    if (tokenWithoutBearer === process.env.HA_LONG_TERM_TOKEN) {
+        req.user = { id: 'home-assistant', role: 'system' };
         return next();
     }
 
-    // Verify the token as a JWT
-    jwt.verify(tokenWithoutBearer, secretKey, (err, user) => {
-        if (err) {
-            console.error('Token verification error:', err);
-            return res.status(403).json({ error: 'Token is not valid or expired' });
-        }
-
-        req.user = user;
+    jwt.verify(tokenWithoutBearer, secretKey, (err, decoded) => {
+        if (err) return res.status(403).json({ error: 'Invalid token' });
+        req.user = decoded;
         next();
     });
 }
+
 
 
 // Create an SES client
@@ -442,7 +432,10 @@ let isLoggedIn = false;
 
 async function loginGrowatt() {
     if (isLoggedIn) return;
-    await growatt.login(user.growattUsername, user.growattPassword);
+    await growatt.login(
+        process.env.GROWATT_USERNAME,
+        process.env.GROWATT_PASSWORD
+        );
     isLoggedIn = true;
     console.log("Growatt login complete")
     return;
