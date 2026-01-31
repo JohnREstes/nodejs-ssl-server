@@ -15,11 +15,16 @@ import mongoose from 'mongoose';
 
 dotenv.config();
 
-mongoose.connect(process.env.MONGO_URI, {
+if (process.env.MONGO_URI) {
+  mongoose.connect(process.env.MONGO_URI, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
-}).then(() => console.log('Connected to MongoDB'))
+  })
+  .then(() => console.log('Connected to MongoDB'))
   .catch(err => console.error('MongoDB connection error:', err));
+} else {
+  console.warn('MongoDB disabled: MONGO_URI not set');
+}
 
 const app = express();
 const hostname = '127.0.0.1';
@@ -433,7 +438,7 @@ let isLoggedIn = false;
 async function loginGrowatt() {
     if (isLoggedIn) return;
     await growatt.login(
-        process.env.GROWATT_USERNAME,
+        process.env.GROWATT_USER,
         process.env.GROWATT_PASSWORD
         );
     isLoggedIn = true;
