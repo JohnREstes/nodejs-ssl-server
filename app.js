@@ -59,6 +59,24 @@ const users = [
     },
 ];
 
+const HA_DATA_FILE = './data/ha_state.json';
+
+function loadHaState() {
+    try {
+        return JSON.parse(fs.readFileSync(HA_DATA_FILE, 'utf8'));
+    } catch (e) {
+        return {};
+    }
+}
+
+function saveHaState(data) {
+    fs.writeFileSync(
+        HA_DATA_FILE,
+        JSON.stringify(data, null, 2)
+    );
+}
+
+
 app.get('/', (req, res) => {
     res.send(`<html>
                 <body>
@@ -635,17 +653,19 @@ app.post('/api/ha/sensor', authenticateToken, async (req, res) => {
 
         console.log('[HA]', entity_id, state);
 
-        // Example: store latest HA data in memory
-        if (!cachedData.homeAssistant) {
-            cachedData.homeAssistant = {};
-        }
+        const haState = loadHaState();
 
-        cachedData.homeAssistant[entity_id] = {
+        haState[entity_id] = {
             state,
-            attributes,
+            attributes: attributes || {},
             last_changed,
             timestamp: timestamp || new Date().toISOString()
         };
+
+        saveHaState(haState);
+
+        // keep in-memory cache in sync (optional but useful)
+        cachedData.homeAssistant = haState;
 
         // 🔁 OPTIONAL: trigger logic
         // await evaluateAutomation(entity_id, state);
@@ -655,4 +675,18 @@ app.post('/api/ha/sensor', authenticateToken, async (req, res) => {
         console.error('HA ingest error:', err);
         res.status(500).json({ error: 'Internal Server Error' });
     }
+});
+
+app.get('/api/ha/state', authenticateToken, (req, res) => {
+    try {
+        const data = cachedData.homeAssistant || loadHaState();
+        res.json(data);
+    } catch (err) {
+        res.status(500).json({ error: 'Failed to load HA state' });
+    }
+});
+
+app.get('/api/ha/state/:entity', authenticateToken, (req, res) => {
+    const data = cachedData.homeAssistant || loadHaState();
+    res.json(data[req.params.entity] || null);
 });
