@@ -121,27 +121,23 @@ app.post('/register', async (req, res) => {
     }
 });
 
-app.post('/login', async (req, res) => {
+app.post('/login', (req, res) => {
     const { username, password } = req.body;
 
-    try {
-        user = await User.findOne({ username });
-
-        if (!user) return res.status(401).json({ error: 'Invalid credentials' });
-
-        // Compare passwords
-        if (bcrypt.compareSync(password, user.password)) {
-            console.log('Password comparison successful');
-            const token = jwt.sign({ userId: user._id }, secretKey, { expiresIn: '30d' });
-            res.json({ token });
-        } else {
-            console.log('Password comparison failed');
-            res.status(401).json({ error: 'Invalid credentials' });
-        }
-    } catch (error) {
-        console.error(error);
-        res.status(500).json({ error: 'Internal Server Error' });
+    if (
+        username !== process.env.SOLAR_USERNAME ||
+        password !== process.env.SOLAR_PASSWORD
+    ) {
+        return res.status(401).json({ error: 'Invalid credentials' });
     }
+
+    const token = jwt.sign(
+        { user: 'solar' },
+        secretKey,
+        { expiresIn: '30d' }
+    );
+
+    res.json({ token });
 });
 
 
