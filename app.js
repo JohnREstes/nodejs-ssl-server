@@ -4,6 +4,7 @@ import dotenv from 'dotenv';
 import rateLimitMiddleware from './middleware/rateLimit.js';
 import authRoutes from './routes/authRoutes.js';
 import solarRoutes from './routes/solarRoutes.js';
+import healthRoutes from './routes/healthRoutes.js';
 
 dotenv.config();
 
@@ -36,14 +37,6 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use('/auth', authRoutes);
 app.use('/api', solarRoutes);
-
-app.get('/health', (req, res) => {
-  res.json({
-    ok: true,
-    service: 'johnetravels-solar-api',
-    version: '2.0.0',
-    time: new Date().toISOString()
-  });
-});
+app.use('/health', healthRoutes);
 
 export default app;
