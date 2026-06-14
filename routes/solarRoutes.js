@@ -4,6 +4,7 @@ import { getLastSolarHistoryLines } from '../services/solarHistoryService.js';
 import { getLatestHaState, saveHaState } from '../services/haService.js';
 import { getVictronData } from '../services/victronService.js';
 import { getGrowattData } from '../services/growattService.js';
+import { getCombinedCachedData } from '../services/cacheService.js';
 
 const router = express.Router();
 
@@ -72,6 +73,20 @@ router.get('/growattData', authenticateToken, async (req, res) => {
     res.status(500).json({
       ok: false,
       error: 'Error fetching Growatt data'
+    });
+  }
+});
+
+
+router.get('/cachedData', authenticateToken, async (req, res) => {
+  try {
+    const data = await getCombinedCachedData();
+    res.json(data);
+  } catch (error) {
+    console.error('[CACHED DATA ROUTE ERROR]', error);
+    res.status(500).json({
+      ok: false,
+      error: 'Error fetching cached data'
     });
   }
 });
