@@ -3,6 +3,7 @@ import { authenticateToken } from '../middleware/auth.js';
 import { getLastSolarHistoryLines } from '../services/solarHistoryService.js';
 import { getLatestHaState, saveHaState } from '../services/haService.js';
 import { getVictronData } from '../services/victronService.js';
+import { getGrowattData } from '../services/growattService.js';
 
 const router = express.Router();
 
@@ -57,6 +58,20 @@ router.get('/victron/data', authenticateToken, async (req, res) => {
     res.status(500).json({
       ok: false,
       error: 'Error fetching Victron data'
+    });
+  }
+});
+
+
+router.get('/growattData', authenticateToken, async (req, res) => {
+  try {
+    const data = await getGrowattData();
+    res.json(data);
+  } catch (error) {
+    console.error('[GROWATT ROUTE ERROR]', error);
+    res.status(500).json({
+      ok: false,
+      error: 'Error fetching Growatt data'
     });
   }
 });
