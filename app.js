@@ -2,6 +2,7 @@ import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
 import rateLimitMiddleware from './middleware/rateLimit.js';
+import authRoutes from './routes/authRoutes.js';
 
 dotenv.config();
 
@@ -29,6 +30,8 @@ app.use(cors({
 app.use(rateLimitMiddleware);
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
+app.use('/auth', authRoutes);
 
 app.get('/health', (req, res) => {
   res.json({
