@@ -3,6 +3,7 @@ import cors from 'cors';
 import dotenv from 'dotenv';
 import rateLimitMiddleware from './middleware/rateLimit.js';
 import authRoutes from './routes/authRoutes.js';
+import solarRoutes from './routes/solarRoutes.js';
 
 dotenv.config();
 
@@ -32,6 +33,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.use('/auth', authRoutes);
+app.use('/api', solarRoutes);
 
 app.get('/health', (req, res) => {
   res.json({
