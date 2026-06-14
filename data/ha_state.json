@@ -1,1 +1,8 @@
-{}
+{
+  "sensor.lp_tank_level_percentage": {
+    "state": "18.9",
+    "attributes": {},
+    "last_changed": "2026-06-14 21:06:08.582283+00:00",
+    "timestamp": "2026-06-14T16:06:08.583889-05:00"
+  }
+}
