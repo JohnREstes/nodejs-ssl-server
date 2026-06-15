@@ -19,10 +19,26 @@ export function authenticateToken(req, res, next) {
     return res.status(401).json({ ok: false, error: 'Missing token' });
   }
 
+  if (
+    env.haIngestToken &&
+    token === env.haIngestToken &&
+    req.path.startsWith('/ha/')
+  ) {
+    req.user = {
+      email: 'homeassistant@local',
+      role: 'ha'
+    };
+
+    return next();
+  }
+
   try {
     req.user = jwt.verify(token, env.jwtSecret);
     next();
   } catch {
-    return res.status(401).json({ ok: false, error: 'Invalid or expired token' });
+    return res.status(401).json({
+      ok: false,
+      error: 'Invalid or expired token'
+    });
   }
 }

@@ -22,5 +22,6 @@ export const env = {
 
   awsRegion: process.env.AWS_REGION || 'us-east-1',
   loginEmailFrom: required('LOGIN_EMAIL_FROM'),
-  loginCodeTtlMinutes: Number(process.env.LOGIN_CODE_TTL_MINUTES || 10)
+  loginCodeTtlMinutes: Number(process.env.LOGIN_CODE_TTL_MINUTES || 10),
+  haIngestToken: process.env.HA_INGEST_TOKEN
 };
