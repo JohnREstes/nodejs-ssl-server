@@ -2,7 +2,9 @@ import Growatt from 'growatt';
 
 const CACHE_TIMEOUT = 15 * 1000;
 
-const growatt = new Growatt({});
+const growatt = new Growatt({
+  server: process.env.GROWATT_SERVER || 'https://server.growatt.com'
+});
 
 let isLoggedIn = false;
 
