@@ -1,10 +1,10 @@
 import express from 'express';
 import { authenticateToken } from '../middleware/auth.js';
 import { getLastSolarHistoryLines } from '../services/solarHistoryService.js';
-import { getLatestHaState, saveHaState } from '../services/haService.js';
 import { getVictronData } from '../services/victronService.js';
 import { getGrowattData } from '../services/growattService.js';
 import { getCombinedCachedData } from '../services/cacheService.js';
+import { getLatestHaState, saveHaState, saveHaSensor } from '../services/haService.js';
 
 const router = express.Router();
 
@@ -46,6 +46,22 @@ router.post('/ha/state', authenticateToken, async (req, res) => {
     res.status(500).json({
       ok: false,
       error: 'Error saving HA state'
+    });
+  }
+});
+
+router.post('/ha/sensor', authenticateToken, async (req, res) => {
+  try {
+    const saved = await saveHaSensor(req.body || {});
+    res.json({
+      ok: true,
+      saved
+    });
+  } catch (error) {
+    console.error('[HA SENSOR SAVE ERROR]', error);
+    res.status(400).json({
+      ok: false,
+      error: error.message || 'Error saving HA sensor'
     });
   }
 });

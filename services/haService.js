@@ -18,3 +18,20 @@ export async function saveHaState(data) {
   await fs.writeFile(HA_DATA_FILE, JSON.stringify(data, null, 2));
   return data;
 }
+
+export async function saveHaSensor({ entity_id, state, attributes = {}, last_changed, timestamp }) {
+  if (!entity_id) {
+    throw new Error('entity_id is required');
+  }
+
+  const currentState = await getLatestHaState();
+
+  currentState[entity_id] = {
+    state,
+    attributes,
+    last_changed,
+    timestamp: timestamp || new Date().toISOString()
+  };
+
+  return saveHaState(currentState);
+}
